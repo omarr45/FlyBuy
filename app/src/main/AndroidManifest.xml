@@ -9,15 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OrderConfirmed"></activity>
-        <activity android:name=".ConfirmDetails" />
-        <activity android:name=".ShoppingCart" />
-        <activity android:name=".AccountEdit" />
-        <activity android:name=".AccountData" />
-        <activity android:name=".ShowProduct" />
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".SignUpActivity" />
+        <!-- Omar -->
         <activity android:name=".SignInActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".ShowProduct" />
+        <!-- Abo ELwafa -->
+        <activity android:name=".ShoppingCart" />
+        <activity android:name=".ConfirmDetails" />
+        <activity android:name=".OrderConfirmed" />
+        <!-- Ahmed -->
+        <activity android:name=".AccountData" />
+        <activity android:name=".AccountEdit" />
+        <activity android:name=".CategorySearch" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

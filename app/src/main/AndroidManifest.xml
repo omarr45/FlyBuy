@@ -14,7 +14,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".ShowProduct" />
-        <!-- Abo ELwafa Sadeek -->
+        <!-- Abo ELwafa Sadeek   -->
         <activity android:name=".ShoppingCart" />
         <activity android:name=".ConfirmDetails" />
         <activity android:name=".OrderConfirmed" />

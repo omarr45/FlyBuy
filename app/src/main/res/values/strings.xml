@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Team8Project</string>
+    <string name="elevation">10dp</string>
 </resources>

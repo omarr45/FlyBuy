@@ -37,7 +37,7 @@ public class SignInActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                ///Code goes here
+                Toast.makeText(SignInActivity.this, "Login Canceled", Toast.LENGTH_SHORT).show();
             }
 
             @Override

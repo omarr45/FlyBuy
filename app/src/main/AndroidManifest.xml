@@ -32,7 +32,13 @@
         </activity>
 
         <!-- Omar AbdElrahman -->
-        <activity android:name=".SignInActivity" />
+        <activity android:name=".SignInActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".ShowProduct" />
@@ -44,13 +50,7 @@
         <activity android:name=".AccountData" />
         <activity android:name=".AccountEdit" />
         <activity android:name=".CategorySearch" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

@@ -17,7 +17,7 @@ import com.facebook.login.widget.LoginButton;
 public class SignInActivity extends AppCompatActivity {
 
     EditText edit;
-    LoginButton login;
+    LoginButton loginFB;
     CallbackManager callbackManager;
 
     @Override
@@ -26,10 +26,10 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         edit = findViewById(R.id.email);
-        login = findViewById(R.id.facebookLogin);
+        loginFB = findViewById(R.id.facebookLogin);
 
         callbackManager = CallbackManager.Factory.create();
-        login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        loginFB.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(SignInActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();

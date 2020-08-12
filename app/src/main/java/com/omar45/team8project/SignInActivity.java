@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -14,9 +17,11 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText edit;
+    EditText email, password;
+    TextView forgotPass, signUp, noLogin;
+    Button loginNormal;
     LoginButton loginFB;
     CallbackManager callbackManager;
 
@@ -25,8 +30,20 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        edit = findViewById(R.id.email);
-        loginFB = findViewById(R.id.facebookLogin);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+
+        forgotPass = findViewById(R.id.forgotPassword);
+        signUp = findViewById(R.id.signUpText);
+        noLogin = findViewById(R.id.noLogin);
+        loginNormal = findViewById(R.id.loginButton);
+
+        forgotPass.setOnClickListener(this);
+        signUp.setOnClickListener(this);
+        noLogin.setOnClickListener(this);
+        loginNormal.setOnClickListener(this);
+
+        loginFB = findViewById(R.id.fbLogin);
 
         callbackManager = CallbackManager.Factory.create();
         loginFB.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -50,7 +67,24 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    ///Temporary intents
+    @Override
+    public void onClick(View view) {
+        if (view.getId()==R.id.loginButton) {
+            Intent in = new Intent(SignInActivity.this, MainActivity.class);
+            startActivity(in);
+        }
+        if (view.getId()==R.id.forgotPassword) {
+            startActivity(new Intent(SignInActivity.this, ForgotPassword.class));
+        }
+        if (view.getId()==R.id.signUpText) {
+            startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+        }
+        if (view.getId()==R.id.noLogin) {
+            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+        }
     }
 }

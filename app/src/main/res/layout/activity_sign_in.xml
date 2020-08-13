@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".SignInActivity">
 
     <LinearLayout
@@ -43,18 +44,18 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="268dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="30dp"
         android:autofillHints="AutoFill"
         android:background="@drawable/round_edit_text"
-        android:elevation="5dp"
         android:drawableLeft="@drawable/email_icon"
+        android:elevation="5dp"
         android:hint="   Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/logoLinearLayout" />
 
     <EditText
         android:id="@+id/password"
@@ -84,7 +85,7 @@
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="Forgot Password?"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:textSize="@dimen/font_sz"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,16 +94,16 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/signInButton"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/round_button"
-        android:text="Login"
+        android:text="Sign In"
         android:textAllCaps="false"
-        android:textColor="@color/offWhite"
+        android:textColor="@color/white"
         android:textSize="@dimen/font_sz"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,6 +112,7 @@
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/fbLogin"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -138,7 +140,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Don't have an account? "
+            android:text="Don't have an account?   "
             android:textColor="@color/black"
             android:textSize="@dimen/font_sz" />
 
@@ -147,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="Sign up"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:textSize="@dimen/font_sz"
             android:textStyle="bold" />
     </LinearLayout>
@@ -173,8 +175,8 @@
             android:id="@+id/noLogin"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:text="Continue without logging in"
-            android:textColor="@color/colorPrimary"
+            android:text="Continue without signing in"
+            android:textColor="@color/white"
             android:textSize="@dimen/font_sz"
             android:textStyle="bold" />
     </LinearLayout>

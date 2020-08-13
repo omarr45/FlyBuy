@@ -36,7 +36,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         forgotPass = findViewById(R.id.forgotPassword);
         signUp = findViewById(R.id.signUpText);
         noLogin = findViewById(R.id.noLogin);
-        loginNormal = findViewById(R.id.loginButton);
+        loginNormal = findViewById(R.id.signInButton);
 
         forgotPass.setOnClickListener(this);
         signUp.setOnClickListener(this);
@@ -73,18 +73,21 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     ///Temporary intents
     @Override
     public void onClick(View view) {
-        if (view.getId()==R.id.loginButton) {
-            Intent in = new Intent(SignInActivity.this, AccountData.class);
-            startActivity(in);
+        if (view.getId()==R.id.signInButton) {
+            startActivity(new Intent(SignInActivity.this, SignInActivity.class));
+//            finish();
         }
         if (view.getId()==R.id.forgotPassword) {
             startActivity(new Intent(SignInActivity.this, ForgotPassword.class));
+//            finish();
         }
         if (view.getId()==R.id.signUpText) {
             startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+//            finish();
         }
         if (view.getId()==R.id.noLogin) {
             startActivity(new Intent(SignInActivity.this, MainActivity.class));
+//            finish();
         }
     }
 }

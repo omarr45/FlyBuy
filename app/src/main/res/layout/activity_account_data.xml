@@ -12,18 +12,13 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
     <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="700dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp">
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,23 +28,38 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="294dp">
+                android:layout_height="220dp">
 
 
                 <Button
-                    android:id="@+id/Edit"
+                    android:id="@+id/editBut"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="75dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginRight="130dp"
+                    android:layout_marginEnd="130dp"
                     android:background="@drawable/edit_button"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <Button
+                    android:id="@+id/signOutBut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Sign Out"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="75dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/round_button_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <ImageView
-                    android:id="@+id/imageView3"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="120dp"
                     android:layout_marginTop="100dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -58,114 +68,74 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_image"
-                    android:layout_width="114dp"
-                    android:layout_height="116dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="39dp"
+                    android:layout_marginTop="30dp"
                     android:src="@drawable/account_image"
                     app:civ_border_color="@color/white"
                     app:civ_border_width="5dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginLeft="30dp" />
 
                 <TextView
-                    android:id="@+id/Name"
+                    android:id="@+id/fullName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="14dp"
-                    android:fontFamily="@font/exo2_regular"
+                    android:fontFamily="@font/exo2_bold"
                     android:text="@string/user_account_name"
-                    android:textColor="#393939"
+                    android:textColor="@color/black"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_image" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="22dp"
-                    android:fontFamily="@font/exo2_regular"
-                    android:text="@string/sign_out"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Name" />
+                    app:layout_constraintTop_toBottomOf="@+id/profile_image"
+                    android:layout_marginLeft="30dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/addressCard"
+                android:id="@+id/aboutCard"
                 android:layout_width="match_parent"
-                android:layout_height="186dp"
+                android:layout_height="200dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="6dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="45dp"
-                        android:layout_height="57dp"
-                        android:layout_marginHorizontal="160dp"
-                        android:layout_marginVertical="35dp"
-                        app:srcCompat="@drawable/location" />
-
                     <TextView
-                        android:id="@+id/address"
-                        android:layout_width="146dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="120dp"
                         android:fontFamily="@font/exo2_regular"
-                        android:text="Cairo, Egypt"
-                        android:textAlignment="center"
-                        android:textColor="#393939"
-                        android:textSize="24sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
-                </LinearLayout>
+                        tools:text="About"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/aboutCard"
+                android:id="@+id/addressCard"
                 android:layout_width="match_parent"
-                android:layout_height="181dp"
+                android:layout_height="200dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="6dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
                     <TextView
-                        android:id="@+id/name2"
                         android:layout_width="146dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="120dp"
-                        android:layout_marginVertical="60dp"
                         android:fontFamily="@font/exo2_regular"
-                        android:text="About"
+                        tools:text="Location\nCairo,Egypt"
                         android:textAlignment="center"
+                        android:layout_gravity="center"
                         android:textColor="#393939"
-                        android:textSize="24sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
-                </LinearLayout>
+                        android:textSize="24sp"/>
 
             </androidx.cardview.widget.CardView>
 

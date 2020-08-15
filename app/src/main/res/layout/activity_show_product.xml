@@ -44,19 +44,18 @@
                 android:layout_marginTop="15dp"
                 android:text="Apple AirPods Pro - White"
                 android:textColor="@color/black"
-                android:fontFamily="@font/exo2_regular"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/productPrice"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:text="4,099 EGP"
                 android:textColor="@color/black"
                 android:fontFamily="@font/exo2_bold"
-                android:textSize="28sp"
+                android:textSize="22sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
             

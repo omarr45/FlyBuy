@@ -28,7 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="220dp">
 
-
                 <Button
                     android:id="@+id/editBut"
                     android:layout_width="50dp"
@@ -77,8 +76,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginLeft="30dp" />
 
-                <TextView
-                    android:id="@+id/fullName"
+                <EditText
+                    android:id="@+id/name_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -87,32 +86,48 @@
                     android:text="@string/user_account_name"
                     android:textColor="@color/black"
                     android:textSize="24sp"
+                    android:background="@android:color/transparent"
+                    android:inputType="none"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/profile_image"
                     android:layout_marginLeft="30dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/aboutCard"
+            <EditText
+                android:id="@+id/email_edit"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="6dp">
+                android:autofillHints="AutoFill"
+                android:background="@drawable/round_edit_text"
+                android:drawableStart="@drawable/email_icon"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:text="omar_abdelrahman2001@yahoo.com"
+                android:textColor="@color/gray"
+                android:hint="   Full Name"
+                android:inputType="textPersonName"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_regular"
-                        tools:text="About"
-                        android:layout_gravity="center"
-                        android:textColor="@color/black"
-                        android:textSize="24sp" />
-
-            </androidx.cardview.widget.CardView>
+            <EditText
+                android:id="@+id/birthday_edit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:autofillHints="AutoFill"
+                android:background="@drawable/round_edit_text"
+                android:drawableStart="@drawable/birthday_icon"
+                android:drawableLeft="@drawable/birthday_icon"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:text="05/04/2001"
+                android:textColor="@color/gray"
+                android:hint="Birthday"
+                android:inputType="date"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/addressCard"
@@ -122,10 +137,17 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="6dp">
+                app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_marginTop="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/location"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
 
                     <TextView
-                        android:layout_width="146dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="120dp"
                         android:fontFamily="@font/exo2_regular"

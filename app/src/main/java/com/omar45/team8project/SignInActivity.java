@@ -74,7 +74,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         if (view.getId()==R.id.signInButton) {
-            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+            startActivity(new Intent(SignInActivity.this, AccountData.class));
 //            finish();
         }
         if (view.getId()==R.id.forgotPassword) {

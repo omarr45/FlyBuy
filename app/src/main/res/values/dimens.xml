@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="font_sz">14sp</dimen>
+    <dimen name="cardview_font_sz">18sp</dimen>
 </resources>

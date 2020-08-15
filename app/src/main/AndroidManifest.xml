@@ -40,7 +40,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".ForgotPassword" />
         <activity android:name=".ShowProduct" />
         <!-- Abo ELwafa Sadeek   -->
         <activity android:name=".ShoppingCart" />

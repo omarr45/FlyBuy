@@ -78,7 +78,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 //            finish();
         }
         if (view.getId()==R.id.forgotPassword) {
-            startActivity(new Intent(SignInActivity.this, ForgotPassword.class));
+            startActivity(new Intent(SignInActivity.this, AccountData.class));
 //            finish();
         }
         if (view.getId()==R.id.signUpText) {

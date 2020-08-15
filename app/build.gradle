@@ -41,6 +41,12 @@ dependencies {
     implementation 'com.android.support:cardview-v7:30.0.0'
     //RecyclerView
     implementation 'com.android.support:recyclerview-v7:30.0.0'
+    //Expandable text view
+    compile 'com.ms-square:expandableTextView:0.1.4'
+    //ImageSlider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.0.7'
+
+
 
 
 }

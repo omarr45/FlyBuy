@@ -137,7 +137,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.signUpText:
-                startActivity(new Intent(SignInActivity.this, SignInActivity.class));
+                startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
 //                finish();
                 break;
 

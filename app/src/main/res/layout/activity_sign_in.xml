@@ -27,16 +27,14 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/exo2_bold_italic"
             android:text="Welcome to FlyBuy"
             android:textColor="@color/black"
             android:textSize="30sp" />
+
     </LinearLayout>
 
     <EditText
@@ -49,8 +47,9 @@
         android:autofillHints="AutoFill"
         android:background="@drawable/round_edit_text"
         android:drawableLeft="@drawable/email_icon"
+        android:drawablePadding="10dp"
         android:elevation="5dp"
-        android:hint="   Email"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -62,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:drawableLeft="@drawable/password_icon"
+        android:drawablePadding="10dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
@@ -69,7 +69,7 @@
         android:layout_marginRight="30dp"
         android:background="@drawable/round_edit_text"
         android:elevation="5dp"
-        android:hint="   Password"
+        android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShoppingCart">
+   <androidx.appcompat.widget.Toolbar
+       android:id="@+id/toolbar"
+       android:layout_width="match_parent"
+       android:layout_height="?attr/actionBarSize"
+       android:background="@color/colorPrimary"
+       android:theme="?attr/actionBarTheme"
+       />
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recycler_view"
@@ -12,6 +19,7 @@
        android:layout_height="match_parent"
        android:scrollbars="vertical"
        android:layout_marginBottom="150dp"
+       android:layout_marginTop="?attr/actionBarSize"
 
        />
 

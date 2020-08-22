@@ -20,10 +20,10 @@ public class ShoppingCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
         recyclerView=findViewById(R.id.recycler_view);
-        CartAdapter CartAdapter= new CartAdapter(ShoppingCart.this,getProductList(),images);
+        CartAdapter adapter= new CartAdapter(ShoppingCart.this,getProductList(),images);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-        recyclerView.setAdapter(CartAdapter);
+        recyclerView.setAdapter(adapter);
     }
 
 

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@color/beige">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/airpods1" />
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:text="Apple AirPods Pro - White"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="192dp"
+            android:fontFamily="@font/exo2_bold"
+            android:text="4,099 EGP"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quantity" />
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="28dp"
+            android:text="Quantity:"
+            android:textColor="@color/black"
+
+            android:textSize="22sp"
+            app:layout_constraintLeft_toRightOf="@id/item_image"
+            app:layout_constraintTop_toBottomOf="@+id/item_name" />
+
+        <EditText
+            android:id="@+id/number_of_items"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="50sp"
+            app:layout_constraintLeft_toRightOf="@id/minus_button"
+            app:layout_constraintRight_toLeftOf="@id/add_button"
+            app:layout_constraintTop_toBottomOf="@+id/item_name" />
+
+        <ImageButton
+            android:id="@+id/add_button"
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toEndOf="@+id/number_of_items"
+            app:layout_constraintTop_toBottomOf="@+id/item_name"
+            app:srcCompat="@drawable/add_button" />
+
+        <ImageButton
+            android:id="@+id/minus_button"
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toEndOf="@+id/quantity"
+            app:layout_constraintTop_toBottomOf="@+id/item_name"
+            app:srcCompat="@drawable/minus_buttom" />
+
+        <ImageButton
+            android:id="@+id/wish_list_button"
+            android:layout_width="43dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="68dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_button"
+            app:srcCompat="@drawable/wish_list_icon" />
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="43dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="71dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_name"
+            app:srcCompat="@drawable/delete_icon" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

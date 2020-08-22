@@ -30,7 +30,7 @@ public class ShoppingCart extends AppCompatActivity {
     private List<Product> getProductList() {
         List<Product> productList = new ArrayList<>();
         for(int i=0;i<3;i++)
-          productList.add(new Product("item",i,4520,images[1]));
+            productList.add(new Product("item",i,4520,images[1]));
         return productList;
     }
 //    }

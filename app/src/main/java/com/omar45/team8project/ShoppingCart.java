@@ -48,7 +48,7 @@ public class ShoppingCart extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(ShoppingCart.this, ConfirmationOrder.class));
+        startActivity(new Intent(ShoppingCart.this, ConfirmDetails.class));
     }
 
 }

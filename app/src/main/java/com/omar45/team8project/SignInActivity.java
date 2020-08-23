@@ -132,7 +132,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.forgotPassword:
-                startActivity(new Intent(SignInActivity.this, ShowProduct.class));
+                startActivity(new Intent(SignInActivity.this, ShoppingCart.class));
 //                finish();
                 break;
 

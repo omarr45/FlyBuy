@@ -38,7 +38,12 @@
         app:cardElevation="20dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="107dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+
+
+        app:layout_constraintTop_toBottomOf="@+id/delivery_option_text"
+        android:layout_marginTop="12dp"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -122,7 +127,12 @@
         app:cardElevation="20dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="357dp">
+        tools:layout_editor_absoluteY="357dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/payment_option"
+        android:layout_marginTop="12dp"
+
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -189,3 +199,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

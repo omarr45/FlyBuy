@@ -10,13 +10,14 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
         tools:ignore="MissingConstraints"
-
         tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="58dp">
+        tools:layout_editor_absoluteY="58dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="70dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -54,22 +55,23 @@
                 android:id="@+id/order_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="129dp"
-                android:layout_marginEnd="159dp"
+                android:layout_marginTop="128dp"
+                android:layout_marginEnd="92dp"
                 android:text="TextView"
                 android:textColor="@color/navyBlue"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="342dp"
-                android:layout_height="38dp"
-                android:layout_marginStart="34dp"
-                android:layout_marginBottom="47dp"
+                android:layout_width="341dp"
+                android:layout_height="61dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginBottom="84dp"
                 android:text="Congratulations! Your order was Successfully placed."
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -82,8 +84,5 @@
 
 
 
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

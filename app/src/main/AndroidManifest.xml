@@ -43,6 +43,7 @@
         <activity android:name=".ShowProduct" />
         <!-- Abo ELwafa Sadeek   -->
         <activity android:name=".ShoppingCart" />
+        <activity android:name=".ConfirmationOrder" />
         <activity android:name=".ConfirmDetails" />
         <activity android:name=".OrderConfirmed" />
         <!-- Ahmed Essam -->

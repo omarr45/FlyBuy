@@ -1,32 +1,70 @@
 package com.omar45.team8project;
 
 public class Product {
+    private String name;
+    private String price;
+    private String description;
+    private String specifications;
+    private String img1;
+    private String img2;
 
-
-    private String product_name;
-    private int product_quantity;
-    private double product_price;
-    private int product_image;
-
-    public Product(String product_name, int product_quantity, double product_price, int product_image) {
-        this.product_name = product_name;
-        this.product_quantity = product_quantity;
-        this.product_price = product_price;
-        this.product_image = product_image;
-    }
-    public String getProduct_name() {
-        return product_name;
+    public Product() {
     }
 
-    public int getProduct_quantity() {
-        return product_quantity;
+    public Product(String name, String price, String description, String specifications, String img1, String img2) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.specifications = specifications;
+        this.img1 = img1;
+        this.img2 = img2;
     }
 
-    public double getProduct_price() {
-        return product_price;
+    public String getName() {
+        return name;
     }
 
-    public int getProduct_image() {
-        return product_image;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(String specifications) {
+        this.specifications = specifications;
+    }
+
+    public String getImg1() {
+        return img1;
+    }
+
+    public void setImg1(String img1) {
+        this.img1 = img1;
+    }
+
+    public String getImg2() {
+        return img2;
+    }
+
+    public void setImg2(String img2) {
+        this.img2 = img2;
     }
 }

@@ -38,11 +38,10 @@ public class ShoppingCart extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     private List<Product> getProductList() {
         List<Product> productList = new ArrayList<>();
         for(int i=0;i<3;i++)
-            productList.add(new Product("item",i,4520,images[1]));
+            productList.add(new Product("name", "1050", "desc", "specs", "img1", "img2"));
         return productList;
     }
 

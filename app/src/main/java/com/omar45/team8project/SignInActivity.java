@@ -19,6 +19,8 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText email, password;
-    TextView forgotPass, signUp, noLogin;
+    TextView forgotPass, signUp;
     Button loginNormal;
     LoginButton loginFB;
     CallbackManager callbackManager;
@@ -45,7 +47,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         //TextViews
         forgotPass  = findViewById(R.id.forgotPassword);
         signUp      = findViewById(R.id.signUpText);
-        noLogin     = findViewById(R.id.noLogin);
         //Buttons
         loginNormal = findViewById(R.id.signInButton);
 
@@ -55,7 +56,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         //OnClickListeners
         forgotPass.setOnClickListener(this);
         signUp.setOnClickListener(this);
-        noLogin.setOnClickListener(this);
         loginNormal.setOnClickListener(this);
 
         ////////////////////////////////////////////////////////////// Enable this to jump over login screen if already logged in
@@ -123,6 +123,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                         if (task.isSuccessful()){
                             Toast.makeText(SignInActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                            finish();
                         } else {
                             Toast.makeText(SignInActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
@@ -132,17 +133,28 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.forgotPassword:
-                startActivity(new Intent(SignInActivity.this, ShoppingCart.class));
-//                finish();
+                String em = email.getText().toString().trim();
+                if (em.isEmpty()) {
+                    email.setError("Email is required");
+                    return;
+                }
+                else{
+                    fAuth.sendPasswordResetEmail(em).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(SignInActivity.this, "Reset link sent successfully!", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(SignInActivity.this, "Error! Reset link was not sent, " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
                 break;
 
             case R.id.signUpText:
                 startActivity(new Intent(SignInActivity.this, Insert.class));
-//                finish();
-                break;
-
-            case R.id.noLogin:
-                startActivity(new Intent(SignInActivity.this, MainActivity.class));
 //                finish();
                 break;
         }

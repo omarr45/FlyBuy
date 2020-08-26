@@ -1,6 +1,13 @@
 package com.omar45.team8project;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "product_table")
 public class Product {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    private int c_id;
     private String name;
     private String price;
     private String description;
@@ -8,17 +15,25 @@ public class Product {
     private String img1;
     private String img2;
 
-    public Product() {
-    }
+    public Product() { }
 
-    public Product(String name, String price, String description, String specifications, String img1, String img2) {
+    public Product(String name, String price, String description, String specifications, String img1) {
+        //this.c_id=c_id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.specifications = specifications;
         this.img1 = img1;
-        this.img2 = img2;
+        //this.img2 = img2;
     }
+
+    public void setC_id(int c_id) { this.c_id = c_id; }
+
+    public int getC_id() { return c_id; }
+
+    public void setId(int id) { this.id = id; }
+
+    public int getId() { return id; }
 
     public String getName() {
         return name;

@@ -46,6 +46,8 @@
         <activity android:name=".ConfirmationOrder" />
         <activity android:name=".ConfirmDetails" />
         <activity android:name=".OrderConfirmed" />
+        <activity android:name=".Insert" />
+
         <!-- Ahmed Essam -->
         <activity android:name=".AccountData" />
         <activity android:name=".AccountEdit" />

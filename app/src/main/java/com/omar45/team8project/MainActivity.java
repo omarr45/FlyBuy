@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Uncomment those two lines only when you finish adding the data ///////////////////////////
-//        if(productDatabase.productDao() == null)
-//              loadData();
+        if(productDatabase.productDao() == null)
+              loadData();
 
         //ImageSlider
         imageSlider = findViewById(R.id.imageSliderMain);

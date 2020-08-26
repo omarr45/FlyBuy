@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Gaming '4'
         productDatabase.productDao().insertProduct(new Product(
                 16, 4, "Nintendo Switch Lite - Turquoise",
-                6091.00,
+                6091,
                 "•\tExternal Product ID : 9318113992084\n" +
                         "•\tPlatform : Nintendo Switch\n" +
                         "•\tExternal Product ID Type : UPC-A\n" +
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 17, 4, "FORZA HORIZON 4 FOR XBOX ONE",
-                1099.00,
+                1099,
                 "In Forza Horizon 4 you explore beautiful scenery, collect over 450 cars, and become a Horizon Superstar in historic Britain. One of the best Racing game series ever .\n" +
                         "\n" +
                         "•\tThe Forza Horizon 4 Standard Edition includes: Forza Horizon 4 game disc\n" +
@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 18, 4, "Sony Playstation 4 500GB with Fifa 20",
-                6477.00,
+                6477,
                 "Sony Playstation 4 500GB with Fifa 20",
                 "Brand\n" +
                         "Sony\n" +
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 19, 4, "Microsoft Xbox One S 1 TB - White",
-                6352.00,
+                6352,
                 "Experience a delightful gaming experience with the Microsoft Xbox One S 1TB." +
                         " It is designed aesthetically in white color and black accents that give your table space a charming look. ",
                 "Brand\n" +
@@ -291,7 +291,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 20, 4, "Sony PlayStation 4 Pro Console 1TB with Marvel's Spider Man",
-                9930.00,
+                9930,
                 "The Sony PS4 Pro lets you explore the vivid gaming world like never before." +
                         " The Sony PlayStation 4 Pro takes you on an awe inspiring journey with a heightened visual and breath-taking audio experience. ",
                 "Brand\n" +
@@ -323,7 +323,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 21, 5, "Apple AirPods Pro, White - MWP22ZA/A",
-                4099.00,
+                4099,
                 "Block the outside world and dive deep into your music with the Apple AirPods Pro." +
                         " They sport a unique white color that is certain to turn many heads. ",
                 "Brand\n" +
@@ -347,7 +347,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 22, 5, "Anker A1230 PowerCore Power Bank, 10000 mAh - Black",
-                594.00,
+                594,
                 "•\tBrand: Anker\n" +
                         "•\tModel: A1230\n" +
                         "•\tType: Wired Power Bank\n" +
@@ -380,7 +380,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 23 , 5, "Apple Watch Series 4 - 44mm Space Gray Aluminum Case with Black Sport Band, GPS, watchOS 5",
-                11500.00,
+                11500,
                 "The Apple Series 4 smartwatch runs on a powerful S4 dual-core processor that delivers fast and efficient performance.",
                 "Brand\n" +
                         "Apple\n" +
@@ -406,7 +406,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 24, 5, "Xiaomi Mi Band 4 Smart Bluetooth Fitness Bracelet Chinese Version",
-                621.00,
+                621,
                 "•\tType : Fitness Trackers\n" +
                         "•\tBrand : Xiaomi\n" +
                         "•\tDisplay Type : Digital\n" +
@@ -431,7 +431,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 25, 5, "Lenovo X18 True Wireless Bluetooth 5.0 Waterproof Earbuds - Black",
-                517.00,
+                517,
                 "•\tBrand: Lenovo\n" +
                         "•\tModel: X18\n" +
                         "•\tColor: Black\n" +
@@ -460,7 +460,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 26, 6, "Aeropostale Sleeveless High-Neck Ribbed Skater Mini Dress for Women - Grey",
-                1499.00,
+                1499,
                 "•\tBrand: Aeropostale\n" +
                         "•\tType: Dress\n" +
                         "•\tMaterial: 57% Cotton and 43% Lyocell\n" +
@@ -490,7 +490,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 27, 6, "BaiLi Strapless Sweetheart chiffon evening gown dress",
-                1150.00,
+                1150,
                 "•\tBrand : BaiLi\n" +
                         "•\tColor : Coral\n" +
                         "•\tFabric Type : Chiffon\n" +
@@ -517,7 +517,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 28, 6, "Gabriella Round-Neck Short-Sleeve Heart-Print High-Low T-shirt for Women - Light Green, M",
-                83.00,
+                83,
                 "•\tBrand: Gabriella\n" +
                         "•\tType: T-shirt\n" +
                         "•\tMaterial: 50% Cotton - 50% Polyester\n" +
@@ -545,7 +545,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 29, 6, "Bella Donna Basic Long Sleeve Fitted Shirt for Women - Black",
-                359.00,
+                359,
                 "•\tBrand: Bella Donna\n" +
                         "•\tColor: Black\n" +
                         "•\tMaterial: 70% Cotton - 27% Nylon - 3% Spandex\n" +
@@ -575,7 +575,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 30, 6, "Bella Cotton Striped Asymmetrical Hem Elastic Waist Skirt for Women - Multi Color, L",
-                99.00,
+                99,
                 "•\tBrand: Bella Cotton\n" +
                         "•\tType: Skirt\n" +
                         "•\tStriped\n" +
@@ -609,7 +609,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
               productDatabase.productDao().insertProduct(new Product(
                 31, 7, "Zercon Two Pieces Wear for Boys - Melon",
-                220.00,
+                220,
                 "•\tBrand: Zercon\n" +
                         "•\tType: Two Pieces Wear\n" +
                         "•\tMaterial: Cotton\n" +
@@ -655,7 +655,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 32, 7, "Lumex Floral Stitched Detail Ruffle Cap Sleeves Dress for Girls - Orange, 12 – 18 Months",
-                110.00,
+                110,
                 "•\tBrand: Lumex\n" +
                         "•\tType: Dress\n" +
                         "•\tRuffle cap sleeves\n" +
@@ -691,7 +691,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 33, 7, "Bella Cotton BCS230 Front Print Drawstring Elastic Waist Shorts for Boys - Heather Light Grey, 10 Years",
-                129.00,
+                129,
                 "•\tBrand: Bella Cotton\n" +
                         "•\tType: Drawstring Shorts\n" +
                         "•\tFront print\n" +
@@ -739,7 +739,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 34, 7, "Carrot T-Shirt For Girls - Grey",
-                70.00,
+                70,
                 "••\tBrand:Carrot\n" +
                         "•\tTop style:T-Shirt\n" +
                         "•\tSleeve Length:Cap Sleeves\n" +
@@ -779,7 +779,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase.productDao().insertProduct(new Product(
                 35, 7, "Mobaco Cotton Short Sleeve Contrast Chest Logo Polo Shirt for Kids - White, 2 - 3 Years",
-                179.00,
+                179,
                 "•\tBrand: Mobaco\n" +
                         "•\tType: Polo shirt\n" +
                         "•\tTargeted group: Unisex\n" +

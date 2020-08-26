@@ -8,7 +8,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = Product.class,version = 1)
+@Database(entities = Product.class,version = 2)
  abstract class ProductDatabase extends RoomDatabase {
     private static ProductDatabase instance;
     public abstract ProductDao productDao();

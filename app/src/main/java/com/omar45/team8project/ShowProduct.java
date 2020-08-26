@@ -51,6 +51,17 @@ public class ShowProduct extends AppCompatActivity {
                     public void onSuccess(List<Product> products) {
                         prodName.setText(products.get(0).getName());
                         prodPrice.setText(String.format("%s EGP", products.get(0).getPrice()));
+
+                        List<SlideModel> slideModels = new ArrayList<SlideModel>();
+                        slideModels.add(new SlideModel(products.get(0).getImg1(), ScaleTypes.CENTER_INSIDE));
+                        slideModels.add(new SlideModel(products.get(0).getImg2(), ScaleTypes.CENTER_INSIDE));
+                        imageSlider.setImageList(slideModels,ScaleTypes.CENTER_INSIDE );
+
+                        prodDesc = findViewById(R.id.expand_desc);
+                        prodDesc.setText(products.get(0).getDescription());
+
+                        prodSpecs = findViewById(R.id.expand_specs);
+                        prodSpecs.setText(products.get(0).getSpecifications());
                     }
 
                     @Override
@@ -59,17 +70,10 @@ public class ShowProduct extends AppCompatActivity {
                     }
                 });
 
-        List<SlideModel> slideModels = new ArrayList<SlideModel>();
-        slideModels.add(new SlideModel(R.drawable.airpods1, ScaleTypes.CENTER_INSIDE));
-        slideModels.add(new SlideModel(R.drawable.airpods2, ScaleTypes.CENTER_INSIDE));
-        imageSlider.setImageList(slideModels,ScaleTypes.CENTER_INSIDE );
 
 
-        prodDesc = findViewById(R.id.expand_desc);
-        prodDesc.setText(getString(R.string.description));
 
-        prodSpecs = findViewById(R.id.expand_specs);
-        prodSpecs.setText(getString(R.string.specs));
+
 
     }
 }

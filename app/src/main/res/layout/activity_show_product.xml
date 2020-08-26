@@ -30,7 +30,7 @@
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/imageSlider"
                 android:background="@color/white"
-                app:iss_placeholder="@drawable/airpods1"
+                app:iss_placeholder="@drawable/loading"
                 app:iss_error_image="@drawable/error"
                 app:iss_selected_dot="@drawable/selected"
                 android:layout_width="match_parent"
@@ -42,6 +42,7 @@
                 android:id="@+id/productName"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
                 android:text="Apple AirPods Pro - White"
                 android:textColor="@color/black"
                 android:textSize="22sp"

@@ -9,7 +9,7 @@ public class Product {
     private int id;
     private int category_id;
     private String name;
-    private float price;
+    private double price;
     private String description;
     private String specifications;
     private String img1;
@@ -17,7 +17,7 @@ public class Product {
 
     public Product() { }
 
-    public Product(int id, int category_id, String name, float price, String description, String specifications, String img1, String img2) {
+    public Product(int id, int category_id, String name, double price, String description, String specifications, String img1, String img2) {
         this.id = id;
         this.category_id = category_id;
         this.name = name;
@@ -44,7 +44,7 @@ public class Product {
         this.name = name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 

@@ -51,9 +51,9 @@ public class Insert extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                productDatabase.productDao().insertProduct(new Product(p_name.getEditableText().toString(),
+                productDatabase.productDao().insertProduct(new Product(1, 2, p_name.getEditableText().toString(),
                         p_price.getEditableText().toString(),p_description.getEditableText().toString(),
-                        p_specs.getEditableText().toString(),p_img.getEditableText().toString()))
+                        p_specs.getEditableText().toString(),p_img.getEditableText().toString(), "url"))
                         .subscribeOn(Schedulers.computation())
                         .subscribe(new CompletableObserver() {
                             @Override

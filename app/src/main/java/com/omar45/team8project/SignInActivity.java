@@ -139,15 +139,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     return;
                 }
                 else{
+                    progressBar.setVisibility(View.VISIBLE);
                     fAuth.sendPasswordResetEmail(em).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(SignInActivity.this, "Reset link sent successfully!", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.INVISIBLE);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(SignInActivity.this, "Error! Reset link was not sent, " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.INVISIBLE);
                         }
                     });
                 }

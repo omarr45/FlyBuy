@@ -2,17 +2,14 @@ package com.omar45.team8project;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +44,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getDescription());
         Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getSpecifications());
         Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getPrice());
-        Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getC_id());
+        Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getCategory_id());
         Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getImg1());
         holder.p_name.setText(productsList.get(position).getName());
         holder.p_price.setText(productsList.get(position).getPrice());

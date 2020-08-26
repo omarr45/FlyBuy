@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 public class Product {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private int c_id;
+    private int category_id;
     private String name;
     private String price;
     private String description;
@@ -17,19 +17,20 @@ public class Product {
 
     public Product() { }
 
-    public Product(String name, String price, String description, String specifications, String img1) {
-        //this.c_id=c_id;
+    public Product(int id, int category_id, String name, String price, String description, String specifications, String img1, String img2) {
+        this.id = id;
+        this.category_id = category_id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.specifications = specifications;
         this.img1 = img1;
-        //this.img2 = img2;
+        this.img2 = img2;
     }
 
-    public void setC_id(int c_id) { this.c_id = c_id; }
+    public void setCategory_id(int category_id) { this.category_id = category_id; }
 
-    public int getC_id() { return c_id; }
+    public int getCategory_id() { return category_id; }
 
     public void setId(int id) { this.id = id; }
 

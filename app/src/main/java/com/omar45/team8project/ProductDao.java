@@ -1,12 +1,13 @@
 package com.omar45.team8project;
 
 import android.os.Bundle;
-import android.database.Observable;
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
 import java.util.List;
+import java.util.Observable;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -19,6 +20,10 @@ import io.reactivex.Single;
         @Query("select * From product_table")
         Single<List<Product>> getProduct();
 
+        @Query("SELECT * FROM product_table WHERE category_id = :catID")
+        Single<List<Product>> getProductCat(int catID);
 
+        @Query("DELETE FROM product_table WHERE id = :prodid")
+        Completable delete (int prodid);
 
 }

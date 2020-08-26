@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/product_Name"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="Product Name"
@@ -46,18 +46,6 @@
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/product_Image"
             app:layout_constraintTop_toBottomOf="@+id/product_Name" />
-
-        <Button
-            android:id="@+id/addToCart"
-            android:layout_width="110dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:text="Add to cart"
-            android:textColor="@color/white"
-            android:background="@drawable/round_button_2"
-            app:layout_constraintStart_toEndOf="@+id/product_Image"
-            app:layout_constraintTop_toBottomOf="@+id/product_Price" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

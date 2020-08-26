@@ -23,6 +23,9 @@ import io.reactivex.Single;
         @Query("SELECT * FROM product_table WHERE category_id = :catID")
         Single<List<Product>> getProductCat(int catID);
 
+        @Query("SELECT * FROM product_table WHERE id = :ID")
+        Single<List<Product>> getProductID(int ID);
+
         @Query("DELETE FROM product_table WHERE id = :prodid")
         Completable delete (int prodid);
 

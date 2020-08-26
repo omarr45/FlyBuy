@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // id, category_id, name, price, desc, specs, img1, img2
         productDatabase.productDao().insertProduct(new Product(
                 1, 1, "OPPO Reno 3 Dual SIM - 128GB, 8GB RAM, 4G LTE - Midnight Black",
-                "5, 749 EGP",
+                5749,
                 "OPPO Reno 3 Dual SIM Mobile - 6.4 inches, 128 GB, 8 GB RAM, 4G LTE - Aurora Blue",
                 "Brand\tOPPO\nPackage thickness\t17.8 cm\nStorage Capacity\t128 GB\n" +
                         "Package weight\t1150 gm\nNumber Of SIM\tDual SIM\nCellular Network Technology\t4G LTE\n",
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .subscribe();
         productDatabase.productDao().insertProduct(new Product(
                 2, 2, "My TV",
-                "5, 749 EGP",
+                5749,
                 "OPPO Reno 3 Dual SIM Mobile - 6.4 inches, 128 GB, 8 GB RAM, 4G LTE - Aurora Blue",
                 "Brand\tOPPO\nPackage thickness\t17.8 cm\nStorage Capacity\t128 GB\n" +
                         "Package weight\t1150 gm\nNumber Of SIM\tDual SIM\nCellular Network Technology\t4G LTE\n",

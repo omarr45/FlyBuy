@@ -1,6 +1,7 @@
 package com.omar45.team8project;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class Insert extends AppCompatActivity {
+public class Insert extends AppCompatActivity implements ProductClickListener {
            RecyclerView p_recyclerView;
            Button set_button, get_button;
            EditText p_name,p_price,p_description,p_specs,p_img,c_id;
@@ -42,7 +43,7 @@ public class Insert extends AppCompatActivity {
 
 
         p_recyclerView=findViewById(R.id.p_recyclerview);
-        final ProductsAdapter adapter = new ProductsAdapter(this);
+        final ProductsAdapter adapter = new ProductsAdapter(this, this);
         p_recyclerView.setAdapter(adapter);
 
         final ProductDatabase productDatabase = ProductDatabase.getInstance(this);
@@ -52,7 +53,7 @@ public class Insert extends AppCompatActivity {
             public void onClick(View view) {
 
                 productDatabase.productDao().insertProduct(new Product(1, 2, p_name.getEditableText().toString(),
-                        p_price.getEditableText().toString(),p_description.getEditableText().toString(),
+                        Integer.parseInt(p_price.getEditableText().toString()),p_description.getEditableText().toString(),
                         p_specs.getEditableText().toString(),p_img.getEditableText().toString(), "url"))
                         .subscribeOn(Schedulers.computation())
                         .subscribe(new CompletableObserver() {
@@ -105,4 +106,9 @@ public class Insert extends AppCompatActivity {
         });
 
 }
+
+    @Override
+    public void onClickProduct(Product product) {
+
+    }
 }

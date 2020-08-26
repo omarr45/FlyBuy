@@ -22,7 +22,8 @@ import static android.content.ContentValues.TAG;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
 
     private List<Product> productsList = new ArrayList<>();
-    Context context;
+    private Context context;
+    private ProductClickListener productClickListener;
 
     @NonNull
     @Override
@@ -30,8 +31,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         return new ProductViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item, parent, false));
     }
 
-    public ProductsAdapter(Context context) {
+    public ProductsAdapter(Context context, ProductClickListener p) {
         this.context = context;
+        this.productClickListener = p;
     }
 
     @Override
@@ -47,7 +49,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getCategory_id());
         Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getImg1());
         holder.p_name.setText(productsList.get(position).getName());
-        holder.p_price.setText(productsList.get(position).getPrice());
+        holder.p_price.setText(String.format("%s EGP", productsList.get(position).getPrice()));
        // holder.p_description.setText(productsList.get(position).getDescription());
         //holder.p_specs.setText(productsList.get(position).getSpecifications());
 //        holder.p_img1.setImageResource(Integer.parseInt(productsList.get(position).getImg1()));

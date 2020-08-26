@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Uncomment those two lines only when you finish adding the data ///////////////////////////
-        if(productDatabase.productDao() == null)
-              loadData();
+        //if(productDatabase.productDao() == null)
+            loadData();
 
         //ImageSlider
         imageSlider = findViewById(R.id.imageSliderMain);
@@ -68,29 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         kidsWear.   setOnClickListener(this);
         menWear.    setOnClickListener(this);
 
-        imageSlider.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onItemSelected(int i) {
-                Intent in = new Intent(MainActivity.this, CategorySearch.class);
-                switch (i) {
-                    case 0:
-                        //mobiles
-                        in.putExtra("category", 1);
-                    case 1:
-                        //kids
-                        in.putExtra("category", 7);
-                    case 2:
-                        //accessories
-                        in.putExtra("category", 5);
-                    case 3:
-                        //perfumes
-                        in.putExtra("category", 3);
-                    default:
-                        in.putExtra("category", 1);
-                }
-                startActivity(in);
-            }
-        });
     }
 
     @Override
@@ -127,29 +104,177 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void loadData() {
         // id, category_id, name, price, desc, specs, img1, img2
+        //Mobiles:
         productDatabase.productDao().insertProduct(new Product(
                 1, 1, "OPPO Reno 3 Dual SIM - 128GB, 8GB RAM, 4G LTE - Midnight Black",
                 5749,
                 "OPPO Reno 3 Dual SIM Mobile - 6.4 inches, 128 GB, 8 GB RAM, 4G LTE - Aurora Blue",
                 "Brand\tOPPO\nPackage thickness\t17.8 cm\nStorage Capacity\t128 GB\n" +
-                        "Package weight\t1150 gm\nNumber Of SIM\tDual SIM\nCellular Network Technology\t4G LTE\n",
+                        "Package weight\t1150 gm\nNumber Of SIM\tDual SIM\nCellular Network Technology\t4G LTE",
                 "https://www.rayashop.com/media/product/94c/oppo-reno3-dual-sim-128gb-8gb-ram-4g-lte-black-cba.jpg",
                 "https://www.ourshopee.com/ourshopee-img/ourshopee_product_images/820023533web-03.jpg"))
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
+
         productDatabase.productDao().insertProduct(new Product(
-                2, 2, "My TV",
-                5749,
-                "OPPO Reno 3 Dual SIM Mobile - 6.4 inches, 128 GB, 8 GB RAM, 4G LTE - Aurora Blue",
-                "Brand\tOPPO\nPackage thickness\t17.8 cm\nStorage Capacity\t128 GB\n" +
-                        "Package weight\t1150 gm\nNumber Of SIM\tDual SIM\nCellular Network Technology\t4G LTE\n",
-                "https://www.elarabygroup.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/t/o/tornado-led-tv-32-inch-hd-with-built-in-receiver-2-hdmi-and-2-usb-inputs-32er9500e-front.jpg",
-                "https://www.ourshopee.com/ourshopee-img/ourshopee_product_images/820023533web-03.jpg"))
+                2, 1, "Apple iPhone 11 with FaceTime - 128GB, 4GB RAM, 4G LTE, Black, Single SIM & E-SIM",
+                15790,
+                "The Apple iPhone 11 is a new-age smartphone designed with A13 Bionic chip which features Neural Engine to a smooth and seamless performance. Enjoy your advanced gaming sessions or dive into your photographic pursuits without a hassle because this Apple phone does everything with the blink of an eye. The 12MP real, dual camera setup, with its leading-edge features, allows you to capture your best moments.",
+                "Brand\tApple\nRelease Date\t2019-09-13\nPackage thickness\t17 cm\n" +
+                        "Storage Capacity\t128 GB\nPackage weight\t518 gm\nCellular Network Technology\t4G LTE",
+                "https://cf1.s3.souqcdn.com/item/2019/09/12/68/31/29/46/item_XXL_68312946_2daabcaa60726.jpg",
+                "https://cf1.s3.souqcdn.com/item/2019/09/12/68/31/29/46/item_XXL_68312946_2daabcaa60726.jpg"))
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
 
+        productDatabase.productDao().insertProduct(new Product(
+                3, 1, "Samsung Galaxy A10s Dual SIM - 32GB, 2GB RAM, 4G LTE, Blue",
+                2015,
+                "Enjoy a seamless entertainment experience with the remarkable Samsung Galaxy A10s Dual-SIM smartphone. It is packed with advanced features and functionalities to give you top-of-the-line user experience. The 6.2inch screen of this high-end smartphone renders an incredible resolution of 720 x 1520 pixels, which makes it a delight to watch your favorite content.",
+                "Brand\tSamsung\nPackage thickness\t16.4 cm\nStorage Capacity\t32 GB\nPackage weight\t340 gm\nDual SIM\tYes",
+                "https://cf2.s3.souqcdn.com/item/2019/10/01/72/97/91/03/item_XXL_72979103_15565c1611439.jpg",
+                "https://cf3.s3.souqcdn.com/item/2019/10/01/72/97/91/03/item_XXL_72979103_b7ade6510287a.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
 
+        productDatabase.productDao().insertProduct(new Product(
+                4, 1, "Realme 6 Pro Dual SIM - 128GB, 8GB RAM, 4G LTE - lightning Blue",
+                5650,
+                "The realme 6 Pro is the world’s first smartphone to launch with the Snapdragon 720G. This processor is made using an advanced 8nm process, making it more powerful and efficient. It is also equipped with Kryo 465 CPU with a maximum clock-speed of 2.3GHz, and a powerful Adreno 618 GPU, which delivers a powerful gaming experience.",
+                "Brand\tRealme\nPackage thickness\t9.2 cm\nStorage Capacity\t128 GB\nPackage weight\t560 gm\nDual SIM\tYes\nCellular Network Technology\t4G LTE",
+                "https://cf5.s3.souqcdn.com/item/2020/04/13/12/28/60/32/1/item_XXL_122860321_febde76b0a272.jpg",
+                "https://cf3.s3.souqcdn.com/item/2020/04/13/12/28/60/32/1/item_XXL_122860321_2f5707d4a8a3b.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
 
+        productDatabase.productDao().insertProduct(new Product(
+                5, 1, "Nokia C1, Dual Sim, 5.45 Inch, 16 GB, 1 GB RAM, 3G - Red",
+                941,
+                "Level up to the new Nokia C1. Enjoy your entertainment – anytime, anywhere – with the large screen and all-day battery life2. Raise your selfie game with the front-facing flash and 5 MP camera. Do more with Android 9 Pie (Go edition) – watch your favorite videos, view your photos and even find your way home all while offline.",
+                "Brand\tNokia\nPackage thickness\t14 cm\nStorage Capacity\t16 GB\nPackage weight\t300 gm\n" +
+                        "Dual SIM\tYes\nCellular Network Technology\t3G",
+                "https://cf4.s3.souqcdn.com/item/2020/02/20/11/66/87/05/9/item_XXL_116687059_aea8278413160.jpg",
+                "https://cf4.s3.souqcdn.com/item/2020/02/20/11/66/87/05/9/item_XXL_116687059_aea8278413160.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+        //TVs
+        productDatabase.productDao().insertProduct(new Product(
+                6, 2, "Toshiba 4K Smart Frameless D-LED Ultra HD 65 Inch TV with Built-In Receiver, Black - 65U5965EA", 10999,
+                "•\tBrand: Toshiba\n" +
+                        "•\tModel: 65U5965EA\n" +
+                        "•\tColor: Black\n" +
+                        "•\tScreen Type: Smart TV\n" +
+                        "•\tScreen size: 65 Inch\n" +
+                        "•\tDimensions: 1460 x 847 x 76 mm\n" +
+                        "•\tHDMI Ports: 3.",
+                "TV Type\tSmart TV\nRemote Control\t1\nPackage thickness\t35 centimeters\nPackage weight\t20 kg\n" +
+                        "HD Type\t4K Ultra HD\nDisplay Resolution\t3840x2160\nDisplay Type\tDLED\nModel Number\t65U5965EA",
+                "https://cf4.s3.souqcdn.com/item/2020/03/30/12/26/96/76/5/item_XXL_122696765_5312b5835a3bf.jpg",
+                "https://cf1.s3.souqcdn.com/item/2020/03/30/12/26/96/76/5/item_XXL_122696765_184285ee83fe0.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        productDatabase.productDao().insertProduct(new Product(
+                7, 2, "Samsung 43 Inch Full HD Smart LED TV with Built-in Receiver, Black - UA43T5300AUXEG", 5275,
+                "•\tBrand: Samsung\n" +
+                        "•\tModel: UA43T5300AUXEG\n" +
+                        "•\tSeries 5\n" +
+                        "•\tScreen Size: 43 Inches\n" +
+                        "•\tResolution:1920 x 1080\n" +
+                        "•\tVideo Picture Engine: Hyper Real\n",
+                "TV Type\tSmart TV\nRemote Control\t1\nPackage thickness\t115 centimeters\nPackage weight\t12 kg\n" +
+                        "HD Type\tFull HD\nDisplay Resolution\t1920x1080\nDisplay Type\tLED\nModel Number\tUA43T5300",
+                "https://cf2.s3.souqcdn.com/item/2020/04/21/12/29/07/84/4/item_XXL_122907844_bc095a9951359.jpg",
+                "https://cf2.s3.souqcdn.com/item/2020/04/21/12/29/07/84/4/item_XXL_122907844_20e1d1e19a595.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        productDatabase.productDao().insertProduct(new Product(
+                8, 2, "Hoho 32 Inch HD Standard LED TV, HK 3205 - Black", 1489,
+                "•\tBrand: Hoho\n" +
+                        "•\tModel: HK 3205\n" +
+                        "•\tScreen Size: 32 Inches\n" +
+                        "•\tResolution:1366 x 768\n",
+                "TV Type\tStandard TV\nRemote Control\t1\nPackage thickness\t17.4 centimeters\nPackage weight\t8.4 kg\n" +
+                        "HD Type\tHD\nDisplay Resolution\t1366 x 768\nDisplay Type\tLED\nModel Number\tHK 3205",
+                "https://cf1.s3.souqcdn.com/item/2020/04/14/12/28/69/24/7/item_XXL_122869247_2175281c19bd2.jpg",
+                "https://cf1.s3.souqcdn.com/item/2020/04/14/12/28/69/24/7/item_XXL_122869247_78731b58bf109.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        productDatabase.productDao().insertProduct(new Product(
+                9, 2, "Toshiba 32 Inch HD LED TV - 32L2600EA", 2444,
+                "•\tBrand: Toshiba\n" +
+                        "•\tModel: 32L2600EA\n" +
+                        "•\tScreen Size: 32 Inches\n" +
+                        "•\tResolution:1366 x 768\n",
+                "TV Type\tStandard TV\nRemote Control\t1\nPackage thickness\t17 centimeters\nPackage weight\t6.5 kg\n" +
+                        "HD Type\tHD\nDisplay Resolution\t1366 x 768\nDisplay Type\tLED\nModel Number\t32L2600EA",
+                "https://cf2.s3.souqcdn.com/item/2019/03/14/11/60/89/34/item_XXL_11608934_69c3574f25e72.jpg",
+                "https://cf2.s3.souqcdn.com/item/2019/03/14/11/60/89/34/item_XXL_11608934_69c3574f25e72.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        productDatabase.productDao().insertProduct(new Product(
+                10, 2, "Samsung 32 Inch HD TV N5000 Series 4 with Built-in Receiver", 2699,
+                "•\tPicture Engine: Hyper Real\n" +
+                        "•\tMotion Rate: 60\n" +
+                        "•\tPQI (Picture Quality Index): 200\n" +
+                        "•\tContrast: Mega Contrast\n" +
+                        "•\tColor: Wide Color Enhancer\n" +
+                        "•\tFilm Mode: Yes",
+                "•\tBrand: Samsung\nTV Type\tStandard TV\nRemote Control\t1\nPackage thickness\t30 centimeters\nPackage weight\t10 kg\n" +
+                        "HD Type\tHD\nDisplay Resolution\t1366 x 768\nDisplay Type\tLED\nModel Number\tUA32N5000",
+                "https://cf5.s3.souqcdn.com/item/2018/07/29/36/68/56/69/item_XXL_36685669_144118672.jpg",
+                "https://cf5.s3.souqcdn.com/item/2018/07/29/36/68/56/69/item_XXL_36685669_144118672.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        //Perfumes
+        productDatabase.productDao().insertProduct(new Product(
+                11, 3, "Gucci Intense Oud for Unisex - Eau de Parfum, 90ml", 2195,
+                "Intense Eau de Parfum has refreshing accords of incense, woody notes, leather, and amber.",
+                "Brand\tGucci\nPackage thickness\t12.4 cm\nPackage weight\t420 gm\nHeight\n6 cm\nWidth\t6.2 cm",
+                "https://cf3.s3.souqcdn.com/item/2019/11/29/95/47/02/3/item_XXL_9547023_0b2f8476158a4.jpg",
+                "https://cf2.s3.souqcdn.com/item/2019/11/29/95/47/02/3/item_XXL_9547023_a1df3f09524dd.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        productDatabase.productDao().insertProduct(new Product(
+                12, 3, "Tobacco Vanille By Tom Ford For Unisex - Eau De Parfum, 100 ml", 4451,
+                "Tobacco Vanille by Tom Ford has an enticing aroma that will make you feel happy.",
+                "Brand\tTom Ford\nPackage thickness\t4.4 cm\nPackage weight\t276 gm\nHeight\n4.4 cm\nWidth\t6.8 cm",
+                "https://cf5.s3.souqcdn.com/item/2017/06/04/72/98/75/7/item_XXL_7298757_32255993.jpg",
+                "https://cf5.s3.souqcdn.com/item/2017/06/04/72/98/75/7/item_XXL_7298757_32255996.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        productDatabase.productDao().insertProduct(new Product(
+                13, 3, "CK Be by Calvin Klein Unisex - Eau de Toilette, 200ml", 599,
+                "CK Be is classified as a refreshing, oriental, woody fragrance. This unisex scent possesses a blend of musk, mandarin, magnolia, peach and sandalwood. It is recommended for daytime wear.",
+                "Brand\tCk\nPackage thickness\t16.8 cm\nPackage weight\t480 gm\nHeight\n4.2 cm\nWidth\t8.4 cm",
+                "https://cf3.s3.souqcdn.com/item/2017/02/23/22/08/98/14/item_XXL_22089814_29149452.jpg",
+                "https://cf3.s3.souqcdn.com/item/2017/02/23/22/08/98/14/item_XXL_22089814_29149452.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        productDatabase.productDao().insertProduct(new Product(
+                14, 3, "Amber Blend by Davidoff for Unisex - Eau de Parfum, 100ml", 1199,
+                "Davidoff Amber Blend is a must-have for every perfume connoisseur. The smooth blending of all the different ingredients makes this fragrance a luxurious and appealing one.",
+                "Brand\tDavidoff\nPackage thickness\t13.8 cm\nPackage weight\t340 gm\nHeight\n4.2 cm\nWidth\t6.6 cm",
+                "https://cf3.s3.souqcdn.com/item/2018/11/14/23/02/14/27/item_XXL_23021427_2451561775fd2.jpg",
+                "https://cf4.s3.souqcdn.com/item/2018/11/14/23/02/14/27/item_XXL_23021427_0ccd3da7bb63b.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        productDatabase.productDao().insertProduct(new Product(
+                15, 3, "Santal Royal Guerlain By Guerlain For Unisex - Eau De Parfum, 125 ml", 2699,
+                "Santal Royal Guerlain brings delight to the senses with its distinct aroma.",
+                "Brand\tGuerlain\nPackage thickness\t14.2 cm\nPackage weight\t600 gm\nHeight\n6.2 cm\nWidth\t6.4 cm",
+                "https://cf4.s3.souqcdn.com/item/2017/11/22/77/47/56/6/item_XXL_7747566_73445175.jpg",
+                "https://cf3.s3.souqcdn.com/item/2017/11/22/77/47/56/6/item_XXL_7747566_73445184.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
 
         // Gaming '4'
         productDatabase.productDao().insertProduct(new Product(
@@ -601,13 +726,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
 
-
-
-
         // Kids Wear '7'
 
-
-              productDatabase.productDao().insertProduct(new Product(
+        productDatabase.productDao().insertProduct(new Product(
                 31, 7, "Zercon Two Pieces Wear for Boys - Melon",
                 220,
                 "•\tBrand: Zercon\n" +
@@ -814,10 +935,79 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
 
+        // Men Wear
+        productDatabase.productDao().insertProduct(new Product(
+                36, 8, "New Born Multi Color Shirt Neck Shirts For Men",
+                376,
+                "•\tBrand: New Born\n" +
+                        "•\tType: Shirt\n" +
+                        "•\tMaterial: Cotton\n" +
+                        "•\tRound Hem\n" +
+                        "•\tPlaid shirt",
+                "Brand\tNew Born\nPackage thickness\t32.6 cm\nPackage weight\t220 gm\nSize\nM\nFabric Type\tCotton",
+                "https://cf4.s3.souqcdn.com/item/2020/05/21/12/63/15/26/8/item_XXL_126315268_80711b56ff0af.jpg",
+                "https://cf5.s3.souqcdn.com/item/2020/05/21/12/63/15/26/8/item_XXL_126315268_8af7f7b6a26f9.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
 
+        productDatabase.productDao().insertProduct(new Product(
+                37, 8, "Aeropostale Stretchy Round Neck Front Print T-Shirt for Men - Heather Grey, XL",
+                559,
+                "•\tBrand: Aeropostale\n" +
+                        "•\tType: T-Shirt\n" +
+                        "•\tMaterial: Mixed Materials\n" +
+                        "•\tContrast print\n" +
+                        "•\tShort sleeves\n",
+                "Brand\tAeropostale\nPackage thickness\t26.6 cm\nPackage weight\t260 gm\nSize\nXL\nFabric Type\tMixed Materials",
+                "https://cf2.s3.souqcdn.com/item/2020/06/22/13/12/22/89/1/item_XXL_131222891_d8bae1cce63d6.jpg",
+                "https://cf2.s3.souqcdn.com/item/2020/06/22/13/12/22/89/1/item_XXL_131222891_d8bae1cce63d6.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
 
+        productDatabase.productDao().insertProduct(new Product(
+                38, 8, "Terranova Cotton Slim-Fit Chino Shorts for Men - Grey, 42",
+                379,
+                "•\tBrand: Terranova\n" +
+                        "•\tType: Shorts\n" +
+                        "•\tMaterial: 100% Cotton\n" +
+                        "•\tBelt Loops\n" +
+                        "•\tRoll up hem\n" +
+                        "•\tSide pockets\n",
+                "Brand\tTerranova\nPackage thickness\t28.2 cm\nPackage weight\t180 gm\nSize\n42 EU\nFabric Type\tCotton",
+                "https://cf2.s3.souqcdn.com/item/2020/05/13/12/41/09/24/9/item_XXL_124109249_2e23f41de2613.jpg",
+                "https://cf2.s3.souqcdn.com/item/2020/05/13/12/41/09/24/9/item_XXL_124109249_2e23f41de2613.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
 
+        productDatabase.productDao().insertProduct(new Product(
+                39, 8, "New Born Ripped Side Pocket Drawstring Elastic Waist Jeans for Men - Navy, M",
+                372,
+                "•\tBrand: New Born\n" +
+                        "•\tColor: Navy\n" +
+                        "•\tMaterial: 98% Cotton - 2% Lycra\n" +
+                        "•\tSide pockets\n" +
+                        "•\tBelt loops",
+                "Brand\tNew Born\nPackage thickness\t35 cm\nPackage weight\t672 gm\nSize\nM\nFabric Type\tMixed Materials",
+                "https://cf2.s3.souqcdn.com/item/2020/05/31/12/90/21/25/2/item_XXL_129021252_ce4813541fd8a.jpg",
+                "https://cf2.s3.souqcdn.com/item/2020/05/31/12/90/21/25/2/item_XXL_129021252_ce4813541fd8a.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
 
+        productDatabase.productDao().insertProduct(new Product(
+                40, 8, "Bella Cotton BCS559 Chest Logo Ribbed Trims Short Sleeves Cotton Polo Shirt for Men - Blue, XXL",
+                129,
+                "•\tBrand: Bella Cotton\n" +
+                        "•\tType: Polo shirt\n" +
+                        "•\tShort sleeves\n" +
+                        "•\tChest logo\n" +
+                        "•\tRibbed trims\n" +
+                        "•\tButtoned collar\n" +
+                        "•\tMaterial: 100% Cotton\n",
+                "Brand\tBella Cotton\nPackage thickness\t26.4 cm\nPackage weight\t240 gm\nSize\nXXL\nFabric Type\tCotton",
+                "https://cf1.s3.souqcdn.com/item/2020/06/16/13/10/91/92/0/item_XXL_131091920_9aff01ea53116.jpg",
+                "https://cf1.s3.souqcdn.com/item/2020/06/16/13/10/91/92/0/item_XXL_131091920_9aff01ea53116.jpg"))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
 
 
 

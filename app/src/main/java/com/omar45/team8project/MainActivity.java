@@ -3,6 +3,8 @@ package com.omar45.team8project;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import io.reactivex.Scheduler;
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import android.content.Intent;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageSlider imageSlider;
     CardView mobiles, tvs, perfumes, gaming, accessories, womenWear, kidsWear, menWear;
     ProductDatabase productDatabase;
+    static boolean flag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Uncomment those two lines only when you finish adding the data ///////////////////////////
-        //if(productDatabase.productDao() == null)
-            loadData();
+        checkData();
 
         //ImageSlider
         imageSlider = findViewById(R.id.imageSliderMain);
@@ -102,7 +104,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    private void checkData() {
+        productDatabase.productDao().getProduct().subscribeOn(Schedulers.computation()).subscribe(new SingleObserver<List<Product>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onSuccess(List<Product> products) {
+                if(products.size()==0)
+                    loadData();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+        });
+    }
+
+
     private void loadData() {
+        flag = false;
         // id, category_id, name, price, desc, specs, img1, img2
         //Mobiles:
         productDatabase.productDao().insertProduct(new Product(

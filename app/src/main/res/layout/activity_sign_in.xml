@@ -158,9 +158,9 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
+        android:layout_marginBottom="40dp"
         android:indeterminateTint="@color/white"
-        android:layout_marginBottom="30dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/signUpLinearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

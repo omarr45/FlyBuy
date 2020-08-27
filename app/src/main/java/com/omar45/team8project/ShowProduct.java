@@ -8,6 +8,7 @@ import io.reactivex.schedulers.Schedulers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -24,12 +25,16 @@ public class ShowProduct extends AppCompatActivity {
 
     ProductDatabase productDatabase;
 
+    Toolbar toolbar;
     TextView prodName, prodPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_product);
+
+        toolbar = findViewById(R.id.toolbarShowProd);
+        setSupportActionBar(toolbar);
 
         imageSlider = findViewById(R.id.imageSlider);
 
@@ -47,8 +52,14 @@ public class ShowProduct extends AppCompatActivity {
 
                     }
 
+
                     @Override
                     public void onSuccess(List<Product> products) {
+                        if (getSupportActionBar() != null) {
+                            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                            getSupportActionBar().setTitle(products.get(0).getName());
+                        }
+
                         prodName.setText(products.get(0).getName());
                         prodPrice.setText(String.format("%s EGP", products.get(0).getPrice()));
 
@@ -70,10 +81,12 @@ public class ShowProduct extends AppCompatActivity {
                     }
                 });
 
-
-
-
-
-
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

@@ -11,11 +11,14 @@ import io.reactivex.schedulers.Schedulers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategorySearch extends AppCompatActivity implements ProductClickListener {
+
+    Toolbar toolbar;
 
     /* Categories:
         1. Mobiles
@@ -34,6 +37,9 @@ public class CategorySearch extends AppCompatActivity implements ProductClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_search);
 
+        toolbar = findViewById(R.id.toolbarCat);
+        setSupportActionBar(toolbar);
+
         RecyclerView productsRecyclerView = findViewById(R.id.prodRecView);
         adapter = new ProductsAdapter(this, this);
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -41,6 +47,57 @@ public class CategorySearch extends AppCompatActivity implements ProductClickLis
 
         Intent intent = getIntent();
         int category = intent.getIntExtra("category", 1);
+
+        switch (category) {
+            case 1:
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("Mobiles");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+                break;
+            case 2:
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("TVs");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+                break;
+            case 3:
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("Perfumes");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+                break;
+            case 4:
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("Gaming");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+                break;
+            case 5:
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("Accessories");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+                break;
+            case 6:
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("Women Wear");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+                break;
+            case 7:
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("Kids Wear");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+                break;
+            case 8:
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("Men Wear");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+                break;
+        }
 
         ProductDatabase productDatabase = ProductDatabase.getInstance(this);
         productDatabase.productDao().getProductCat(category)
@@ -72,4 +129,11 @@ public class CategorySearch extends AppCompatActivity implements ProductClickLis
         intent.putExtra("id", product.getId());
         startActivity(intent);
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

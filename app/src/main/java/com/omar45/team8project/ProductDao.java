@@ -26,6 +26,9 @@ import io.reactivex.Single;
         @Query("SELECT * FROM product_table WHERE id = :ID")
         Single<List<Product>> getProductID(int ID);
 
+        @Query("SELECT * FROM product_table WHERE name LIKE '%' || :searchQ || '%' ")
+        Single<List<Product>> getProductName(String searchQ);
+
         @Query("DELETE FROM product_table WHERE id = :prodid")
         Completable delete (int prodid);
 

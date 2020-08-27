@@ -1,26 +1,30 @@
 package com.omar45.team8project;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import io.reactivex.Scheduler;
-import io.reactivex.SingleObserver;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import androidx.appcompat.widget.Toolbar;
+
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    Toolbar toolbar;
     ImageSlider imageSlider;
     CardView mobiles, tvs, perfumes, gaming, accessories, womenWear, kidsWear, menWear;
     ProductDatabase productDatabase;
@@ -30,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.toolbarMain);
+        setSupportActionBar(toolbar);
 
         productDatabase = ProductDatabase.getInstance(this);
 
@@ -124,6 +131,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.cartID) {
+            Intent intent = new Intent(getApplicationContext(), ShoppingCart.class);
+            startActivity(intent);
+        }
+        if (id == R.id.searchID) {
+            Intent intent2 = new Intent(getApplicationContext(), AllProducts.class);
+            startActivity(intent2);
+        }
+        return true;
+    }
 
     private void loadData() {
         flag = false;

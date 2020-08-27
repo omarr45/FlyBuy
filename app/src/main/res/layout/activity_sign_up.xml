@@ -20,8 +20,8 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="75dp"
+            android:layout_height="70dp"
             android:background="@drawable/logo_primary"
             android:contentDescription="logo" />
 
@@ -29,11 +29,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/exo2_bold_italic"
             android:text="Welcome to FlyBuy"
             android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:textSize="25dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
             android:fontFamily="@font/exo2_bold_italic"
             android:text="Join us today!"
             android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:textSize="25dp" />
     </LinearLayout>
 
     <EditText

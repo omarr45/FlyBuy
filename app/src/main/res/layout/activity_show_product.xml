@@ -175,6 +175,7 @@
     01200038597
 
     <Button
+        android:id="@+id/add_to_cart"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"

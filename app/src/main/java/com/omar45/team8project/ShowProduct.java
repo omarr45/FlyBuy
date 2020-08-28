@@ -7,6 +7,8 @@ import io.reactivex.schedulers.Schedulers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -28,6 +30,8 @@ public class ShowProduct extends AppCompatActivity {
     Toolbar toolbar;
     TextView prodName, prodPrice;
 
+    Button addToCart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +41,13 @@ public class ShowProduct extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         imageSlider = findViewById(R.id.imageSlider);
+        addToCart   = findViewById(R.id.add_to_cart);
 
         prodName = findViewById(R.id.productName);
         prodPrice = findViewById(R.id.productPrice);
 
         Intent intent = getIntent();
-        int id = intent.getIntExtra("id", 1);
+        final int id = intent.getIntExtra("id", 1);
 
         productDatabase = ProductDatabase.getInstance(this);
         productDatabase.productDao().getProductID(id).subscribeOn(Schedulers.computation())
@@ -80,6 +85,15 @@ public class ShowProduct extends AppCompatActivity {
 
                     }
                 });
+
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(ShowProduct.this, ShoppingCart.class);
+                in.putExtra("id", id);
+                startActivity(in);
+            }
+        });
 
     }
 

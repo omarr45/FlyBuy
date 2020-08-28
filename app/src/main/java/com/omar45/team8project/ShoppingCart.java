@@ -9,14 +9,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import androidx.appcompat.widget.Toolbar;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingCart extends AppCompatActivity implements View.OnClickListener {
-    RecyclerView recyclerView;
-    private int[] images = {R.drawable.airpods1,R.drawable.airpods2,R.drawable.airpods3};
-    private CartAdapter adapter;
+public class ShoppingCart extends AppCompatActivity {
+
+    Toolbar toolbar;
+    private ProductsAdapter adapter;
+    List<Product> productList;
     Button checkout;
 
     @Override
@@ -24,30 +30,59 @@ public class ShoppingCart extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
-        recyclerView=findViewById(R.id.recycler_view);
-        CartAdapter adapter= new CartAdapter(ShoppingCart.this,getProductList(),images);
+        productList = new ArrayList<>();
+
+        toolbar = findViewById(R.id.toolbarCart);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Cart");
+        }
+
+        Intent in = getIntent();
+        int id = in.getIntExtra("id", 20);
+
+        RecyclerView recyclerView = findViewById(R.id.shopping_recycler_view);
+        adapter = new ProductsAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
 
+        final ProductDatabase database = ProductDatabase.getInstance(this);
+
+        database.productDao().getProductID(id)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Product>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(List<Product> products) {
+                        productList.add(products.get(0));
+                        adapter.setList(productList);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+
+//        if (productList.size()!=0) {
+//            adapter.setList(productList);
+//            adapter.notifyDataSetChanged();
+//        }
 
         checkout=findViewById(R.id.checkout_button);
-
-        //OnClickListeners
-        checkout.setOnClickListener(this);
-
-    }
-
-    private List<Product> getProductList() {
-        List<Product> productList = new ArrayList<>();
-        for(int i=0;i<3;i++)
-            productList.add(new Product());
-        return productList;
     }
 
     @Override
-    public void onClick(View view) {
-        startActivity(new Intent(ShoppingCart.this, ConfirmationOrder.class));
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
-
 }

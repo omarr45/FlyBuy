@@ -95,13 +95,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         productDatabase = ProductDatabase.getInstance(this);
 
-//        productDatabase.productDao().delete(1).subscribeOn(Schedulers.computation())
-//                .subscribe();
-//        productDatabase.productDao().delete(2).subscribeOn(Schedulers.computation())
-//                .subscribe();
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //Uncomment those two lines only when you finish adding the data ///////////////////////////
         checkData();
 
         //ImageSlider

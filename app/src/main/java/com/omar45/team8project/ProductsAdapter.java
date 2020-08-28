@@ -31,6 +31,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         return new ProductViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item, parent, false));
     }
 
+    public ProductsAdapter(Context context) {
+        this.context = context;
+    }
+
     public ProductsAdapter(Context context, ProductClickListener p) {
         this.context = context;
         this.productClickListener = p;

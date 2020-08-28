@@ -59,11 +59,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         loginNormal.setOnClickListener(this);
 
         ////////////////////////////////////////////////////////////// Enable this to jump over login screen if already logged in
-//        //FireBase
-//        if (fAuth.getCurrentUser()!=null) {
-//            startActivity(new Intent(SignInActivity.this, MainActivity.class));
-//            finish();
-//        }
+        //FireBase
+        if (fAuth.getCurrentUser()!=null) {
+            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+            finish();
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //Facebook Stuff

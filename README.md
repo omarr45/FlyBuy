@@ -3,5 +3,4 @@
 ### This is the project of Team_8 in the "Andorid Development Track" course, offered by iHub and Faculty of Computer and Information Science - AinShams University.  
 ### Contributors:
 1) Aboelwfaa Sadeek
-2) Ahmed Essam
 3) Omar AbdulRahman

@@ -41,7 +41,7 @@ public class ShoppingCart extends AppCompatActivity {
         }
 
         Intent in = getIntent();
-        int id = in.getIntExtra("id", 20);
+        int id = in.getIntExtra("id", 50);
 
         RecyclerView recyclerView = findViewById(R.id.shopping_recycler_view);
         adapter = new ProductsAdapter(this);
@@ -50,32 +50,29 @@ public class ShoppingCart extends AppCompatActivity {
 
         final ProductDatabase database = ProductDatabase.getInstance(this);
 
-        database.productDao().getProductID(id)
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<List<Product>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
+        if (id != 50) {
+            database.productDao().getProductID(id)
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<List<Product>>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onSuccess(List<Product> products) {
-                        productList.add(products.get(0));
-                        adapter.setList(productList);
-                        adapter.notifyDataSetChanged();
-                    }
+                        @Override
+                        public void onSuccess(List<Product> products) {
+                            productList.add(products.get(0));
+                            adapter.setList(productList);
+                            adapter.notifyDataSetChanged();
+                        }
 
-                    @Override
-                    public void onError(Throwable e) {
+                        @Override
+                        public void onError(Throwable e) {
 
-                    }
-                });
-
-//        if (productList.size()!=0) {
-//            adapter.setList(productList);
-//            adapter.notifyDataSetChanged();
-//        }
+                        }
+                    });
+        }
 
         checkout=findViewById(R.id.checkout_button);
     }

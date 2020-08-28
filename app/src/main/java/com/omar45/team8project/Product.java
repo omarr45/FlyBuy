@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "product_table")
 public class Product {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private int id;
     private int category_id;
     private String name;
@@ -36,21 +36,13 @@ public class Product {
 
     public int getId() { return id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public float getPrice() {
-        return price;
-    }
+    public float getPrice() { return price;}
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
+    public void setPrice(float price) { this.price = price; }
 
     public String getDescription() {
         return description;

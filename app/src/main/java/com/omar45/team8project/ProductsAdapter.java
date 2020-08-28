@@ -20,10 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import static android.content.ContentValues.TAG;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
-
     private List<Product> productsList = new ArrayList<>();
     private Context context;
     private ProductClickListener productClickListener;
+
 
     @NonNull
     @Override
@@ -42,21 +42,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        //holder.prodName.setText(productsList.get(position).getName());
-        //holder.prodPrice.setText(productsList.get(position).getPrice());
-        //Picasso.get().load(productsList.get(position).getImg1()).placeholder(R.drawable.logo_white)
-         //       .into(holder.prodImg);
-        Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getName());
-        Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getDescription());
-        Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getSpecifications());
-        Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getPrice());
-        Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getCategory_id());
-        Log.e(TAG, "onBindViewHolder: "+productsList.get(position).getImg1());
+
         holder.p_name.setText(productsList.get(position).getName());
         holder.p_price.setText(String.format("%s EGP", productsList.get(position).getPrice()));
-       // holder.p_description.setText(productsList.get(position).getDescription());
-        //holder.p_specs.setText(productsList.get(position).getSpecifications());
-//        holder.p_img1.setImageResource(Integer.parseInt(productsList.get(position).getImg1()));
         Glide.with(context).load(productsList.get(position).getImg1().toString()).into(holder.p_img1);
 
 
@@ -73,22 +61,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     }
 
     public class ProductViewHolder extends RecyclerView.ViewHolder {
-        //TextView prodName, prodPrice;
-        //ImageView prodImg;
-        TextView p_name,p_price,p_description,p_specs;
-       // EditText p_image1,p_image2,c_id;
+
+        TextView p_name,p_price;
         ImageView p_img1;
         @SuppressLint("ResourceType")
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-          //  prodName    = itemView.findViewById(R.id.product_Name);
-           // prodPrice   = itemView.findViewById(R.id.product_Price);
-            //prodImg     = itemView.findViewById(R.id.product_Image);
-
             p_name=itemView.findViewById(R.id.product_Name);
             p_price=itemView.findViewById(R.id.product_Price);
-         //   p_description=itemView.findViewById(R.id.prod);
-           // p_specs=itemView.findViewById(R.id.p_specs);
            p_img1=itemView.findViewById(R.id.product_Image);
 
 
@@ -101,7 +81,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
                     Product product = productsList.get(getAdapterPosition());
                     productClickListener.onClickProduct(product);
                 }
-            });
+            }
+            );
         }
     }
 }

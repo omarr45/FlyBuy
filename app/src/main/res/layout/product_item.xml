@@ -26,12 +26,12 @@
 
         <TextView
             android:id="@+id/product_Name"
-            android:layout_width="250dp"
+            android:layout_width="235dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="10dp"
             android:text="Product Name"
             android:textColor="@color/black"
-            android:textSize="22sp"
+            android:textSize="17dp"
             app:layout_constraintStart_toEndOf="@+id/product_Image"
             app:layout_constraintTop_toTopOf="@+id/product_Image" />
 

@@ -32,4 +32,6 @@ import io.reactivex.Single;
         @Query("DELETE FROM product_table WHERE id = :prodid")
         Completable delete (int prodid);
 
+
+
 }

@@ -50,7 +50,7 @@
           android:layout_height="wrap_content"
           android:layout_marginStart="54dp"
           android:layout_marginTop="20dp"
-          android:text="Sub Total:"
+          android:text="Total:"
           android:textColor="@color/black"
           android:textSize="22sp"
           app:layout_constraintStart_toStartOf="parent"

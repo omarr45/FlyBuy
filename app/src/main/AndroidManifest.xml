@@ -9,13 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".AllProducts"></activity>
-        <!-- Facebook -->
+        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".AllProducts" /> <!-- Facebook -->
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -46,6 +45,7 @@
         <activity android:name=".AccountEdit" />
         <activity android:name=".CategorySearch" />
         <activity android:name=".MainActivity" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />

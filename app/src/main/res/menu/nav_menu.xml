@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/homeNav"
-            android:icon="@drawable/ic_home_black"
-            android:title="Home" />
+    <item
+        android:id="@+id/homeNav"
+        android:icon="@drawable/ic_home_black"
+        android:title="Home" />
 
-        <item
-            android:id="@+id/cartNav"
-            android:icon="@drawable/ic_cart_black"
-            android:title="Cart" />
+    <item
+        android:id="@+id/cartNav"
+        android:icon="@drawable/ic_cart_black"
+        android:title="Cart" />
 
-        <item
-            android:id="@+id/accNav"
-            android:icon="@drawable/ic_account_black"
-            android:title="Account" />
+    <item
+        android:id="@+id/accNav"
+        android:icon="@drawable/ic_account_black"
+        android:title="Account" />
 
-        <item
-            android:id="@+id/aboutNav"
-            android:icon="@drawable/ic_info_black"
-            android:title="About Us" />
-
-    </group>
-
+    <item
+        android:id="@+id/aboutNav"
+        android:icon="@drawable/ic_info_black"
+        android:title="About Us" />
 
     <item
         android:id="@+id/signOutNav"

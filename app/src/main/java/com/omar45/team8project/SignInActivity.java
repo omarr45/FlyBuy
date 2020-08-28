@@ -72,7 +72,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         loginFB.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                startActivity(new Intent(SignInActivity.this, MainActivity.class));
                 Toast.makeText(SignInActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                finish();
             }
 
             @Override
@@ -85,6 +87,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(SignInActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
             }
         });
+
+        loginFB.setLoginText("Sign in with Facebook");
+        loginFB.setLogoutText("Sign Out");
     }
 
     //Facebook Stuff Cont.

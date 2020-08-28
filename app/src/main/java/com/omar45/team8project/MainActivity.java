@@ -13,6 +13,10 @@ import androidx.appcompat.widget.Toolbar;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,17 +37,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageSlider imageSlider;
     CardView mobiles, tvs, perfumes, gaming, accessories, womenWear, kidsWear, menWear;
     ProductDatabase productDatabase;
-    static boolean flag = true;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fAuth = FirebaseAuth.getInstance();
+
         toolbar = findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
 
+        FacebookSdk.getApplicationContext();
+
         drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.navView);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.homeNav:
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.cartNav:
+                        drawerLayout.closeDrawers();
+                        startActivity(new Intent(MainActivity.this, ShoppingCart.class));
+                        break;
+                    case R.id.accNav:
+                        drawerLayout.closeDrawers();
+                        startActivity(new Intent(MainActivity.this, AccountData.class));
+                        break;
+                    case R.id.aboutNav:
+                        drawerLayout.closeDrawers();
+                        startActivity(new Intent(MainActivity.this, AboutUs.class));
+                        break;
+                    case R.id.signOutNav:
+                        drawerLayout.closeDrawers();
+                        LoginManager.getInstance().logOut();
+                        fAuth.signOut();
+                        startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                }
+                return true;
+            }
+        });
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -172,7 +210,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void loadData() {
-        flag = false;
         // id, category_id, name, price, desc, specs, img1, img2
         //Mobiles:
         productDatabase.productDao().insertProduct(new Product(

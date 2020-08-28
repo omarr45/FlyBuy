@@ -129,7 +129,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 String _name = name.getText().toString().trim();
                 String _birthday = birthday.getText().toString().trim();
                 String _number = number.getText().toString().trim();
-                String _email = email.getText().toString().trim();
+                final String _email = email.getText().toString().trim();
                 String _password = password.getText().toString().trim();
                 String _passwordConfirm = confPassword.getText().toString().trim();
                 user = new User(_name, _birthday, _number, _email, _password);
@@ -172,7 +172,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             Toast.makeText(SignUpActivity.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
                             FirebaseUser fUser = fAuth.getCurrentUser();
                             updateDB(fUser);
-                            startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                            Intent intentMain = new Intent(SignUpActivity.this, MainActivity.class);
+                            intentMain.putExtra("email", _email);
+                            startActivity(intentMain);
                         } else {
                             Toast.makeText(SignUpActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);

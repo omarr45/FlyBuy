@@ -9,157 +9,111 @@
     tools:context=".AccountData">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarAccData"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="Account" />
 
-    <ScrollView
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/acc_name"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="100dp"
+        android:background="@drawable/acc_header"
+        android:fontFamily="@font/exo2_bold"
+        android:text="@string/user_account_name"
+        android:textColor="@color/white"
+        android:textSize="30sp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/email_icon"/>
+
+        <TextView
+            android:id="@+id/acc_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="6dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/round_edit_text"
+            android:text="omar_abdelrahman2001@yahoo.com"
+            android:textSize="20sp"
+            android:textColor="@color/gray"
+            android:singleLine="true"
+            android:elevation="5dp"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/relativeLayout"
-                android:layout_width="match_parent"
-                android:layout_height="220dp">
+    </LinearLayout>
 
-                <Button
-                    android:id="@+id/editBut"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="75dp"
-                    android:layout_marginRight="130dp"
-                    android:layout_marginEnd="130dp"
-                    android:background="@drawable/edit_button"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
 
-                <Button
-                    android:id="@+id/signOutBut"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="Sign Out"
-                    android:textAllCaps="false"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="75dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/round_button_2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/birthday_icon"/>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginTop="100dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/white" />
+        <TextView
+            android:id="@+id/acc_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="6dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/round_edit_text"
+            android:text="04/05/2001"
+            android:textSize="20sp"
+            android:textColor="@color/gray"
+            android:singleLine="true"
+            android:elevation="5dp"/>
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/account_image"
-                    app:civ_border_color="@color/white"
-                    app:civ_border_width="5dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginLeft="30dp" />
+    </LinearLayout>
 
-                <EditText
-                    android:id="@+id/name_edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="14dp"
-                    android:fontFamily="@font/exo2_bold"
-                    android:text="@string/user_account_name"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:background="@android:color/transparent"
-                    android:inputType="none"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_image"
-                    android:layout_marginLeft="30dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/phone_icon"/>
 
-            <EditText
-                android:id="@+id/email_edit"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:autofillHints="AutoFill"
-                android:background="@drawable/round_edit_text"
-                android:drawableStart="@drawable/email_icon"
-                android:drawablePadding="10dp"
-                android:elevation="5dp"
-                android:text="omar_abdelrahman2001@yahoo.com"
-                android:textColor="@color/gray"
-                android:hint="   Full Name"
-                android:inputType="textPersonName"/>
+        <TextView
+            android:id="@+id/acc_phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="6dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/round_edit_text"
+            android:text="01122237976"
+            android:textSize="20sp"
+            android:textColor="@color/gray"
+            android:singleLine="true"
+            android:elevation="5dp"/>
 
-            <EditText
-                android:id="@+id/birthday_edit"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:autofillHints="AutoFill"
-                android:background="@drawable/round_edit_text"
-                android:drawableStart="@drawable/birthday_icon"
-                android:drawableLeft="@drawable/birthday_icon"
-                android:drawablePadding="10dp"
-                android:elevation="5dp"
-                android:text="05/04/2001"
-                android:textColor="@color/gray"
-                android:hint="Birthday"
-                android:inputType="date"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/addressCard"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="20dp">
-
-                    <ImageView
-                        android:layout_marginTop="15dp"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/location"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="120dp"
-                        android:fontFamily="@font/exo2_regular"
-                        tools:text="Location\nCairo,Egypt"
-                        android:textAlignment="center"
-                        android:layout_gravity="center"
-                        android:textColor="#393939"
-                        android:textSize="24sp"/>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>

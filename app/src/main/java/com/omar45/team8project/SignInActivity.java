@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,6 +36,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    FirebaseUser fUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +46,17 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         //EditTexts
         email       = findViewById(R.id.email_login);
         password    = findViewById(R.id.password_login);
+
         //TextViews
         forgotPass  = findViewById(R.id.forgotPassword);
         signUp      = findViewById(R.id.signUpText);
+
         //Buttons
         loginNormal = findViewById(R.id.signInButton);
 
         fAuth       = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar2);
+        fUser       = fAuth.getCurrentUser();
 
         //OnClickListeners
         forgotPass.setOnClickListener(this);
@@ -104,7 +109,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.signInButton:
-                String _email = email.getText().toString().trim();
+                final String _email = email.getText().toString().trim();
                 String _password = password.getText().toString().trim();
 
                 if(_email.isEmpty()) {
@@ -127,7 +132,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(SignInActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                            Intent intentMain = new Intent(SignInActivity.this, MainActivity.class);
+                            intentMain.putExtra("email", _email);
+                            startActivity(intentMain);
                             finish();
                         } else {
                             Toast.makeText(SignInActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

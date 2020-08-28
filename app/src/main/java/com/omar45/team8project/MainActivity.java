@@ -38,11 +38,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CardView mobiles, tvs, perfumes, gaming, accessories, womenWear, kidsWear, menWear;
     ProductDatabase productDatabase;
     FirebaseAuth fAuth;
+    String currentEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intentt = getIntent();
+        currentEmail = intentt.getStringExtra("email");
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -66,7 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     case R.id.accNav:
                         drawerLayout.closeDrawers();
-                        startActivity(new Intent(MainActivity.this, AccountData.class));
+                        Intent intent = new Intent(MainActivity.this, AccountData.class);
+                        intent.putExtra("email", currentEmail);
+                        startActivity(intent);
                         break;
                     case R.id.aboutNav:
                         drawerLayout.closeDrawers();
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         slideModels.add(new SlideModel(R.drawable.banner1, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.banner3, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.banner4, ScaleTypes.FIT));
-        imageSlider.startSliding(2000);
+        imageSlider.startSliding(1700);
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
 
         mobiles     = findViewById(R.id.mobilesCategory);

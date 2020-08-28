@@ -42,7 +42,6 @@
         <activity android:name=".OrderConfirmed" />
         <activity android:name=".Insert" />
         <activity android:name=".AccountData" /> <!-- Ahmed Essam -->
-        <activity android:name=".AccountEdit" />
         <activity android:name=".CategorySearch" />
         <activity android:name=".MainActivity" />
 

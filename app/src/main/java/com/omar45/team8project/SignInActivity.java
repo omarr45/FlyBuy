@@ -37,7 +37,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     FirebaseAuth fAuth;
     ProgressBar progressBar;
     FirebaseUser fUser;
-    public static int x  = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

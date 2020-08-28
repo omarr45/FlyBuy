@@ -20,10 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import static android.content.ContentValues.TAG;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
+
     private List<Product> productsList = new ArrayList<>();
     private Context context;
     private ProductClickListener productClickListener;
-
 
     @NonNull
     @Override
@@ -81,8 +81,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
                     Product product = productsList.get(getAdapterPosition());
                     productClickListener.onClickProduct(product);
                 }
-            }
-            );
+            });
         }
     }
 }

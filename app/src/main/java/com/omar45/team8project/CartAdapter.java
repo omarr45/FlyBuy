@@ -29,7 +29,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private Context context;
     private ProductClickListener productClickListener;
     private List<Product> productList = new ArrayList<>();
-    private float total = 0;
+    public static float total=0;
 
 
 
@@ -65,9 +65,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
                         @Override
                         public void onSuccess(List<Product> products) {
-                            //Log.i("Item" , idList.get(0));
 
                             productList.add(products.get(0));
+                            total += productList.get(position).getPrice();
+
                             try {
                                 holder.p_name.setText(productList.get(position).getName());
                                 holder.p_price.setText(String.format("%s EGP", productList.get(position).getPrice()));
@@ -77,8 +78,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             {
                                 e.printStackTrace();
                             }
-                            Log.i("Product",products.get(0).getName());
-                            Log.i("ProductList",productList.get(0).getName());
+
                             total += productList.get(position).getPrice();
                         }
 
@@ -89,10 +89,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                         }
                     });
         }
-//        Log.i("ProductList",productList.get(0).getName());
-/*
 
-*/
+
     }
 
     @Override
@@ -119,18 +117,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             p_price=itemView.findViewById(R.id.product_Price);
             p_img1=itemView.findViewById(R.id.product_Image);
 
-
-
-
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                Product product = productList.get(getAdapterPosition());
-                                                productClickListener.onClickProduct(product);
-                                            }
-                                        }
-            );
         }
         }
 

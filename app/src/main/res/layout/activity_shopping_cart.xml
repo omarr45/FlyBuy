@@ -55,6 +55,19 @@
           android:textSize="22sp"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
+
+      <EditText
+          android:id="@+id/total"
+          android:layout_width="70dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="29dp"
+          android:layout_marginBottom="10dp"
+          android:ems="10"
+          android:inputType="textWebEditText|numberDecimal"
+          android:text=""
+          android:textSize="25dp"
+          app:layout_constraintBottom_toTopOf="@+id/checkout_button"
+          app:layout_constraintStart_toEndOf="@+id/sub_total" />
    </androidx.constraintlayout.widget.ConstraintLayout>
 
 

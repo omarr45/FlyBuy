@@ -153,6 +153,7 @@
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="5dp"
                             android:textSize="16sp"
+                            android:fontFamily="@font/exo2_regular"
                             android:textColor="@color/gray" />
                         <ImageButton
                             android:id="@id/expand_collapse"

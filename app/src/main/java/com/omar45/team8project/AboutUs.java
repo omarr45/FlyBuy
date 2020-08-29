@@ -5,28 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.widget.Toolbar;
 import mehdi.sakout.aboutpage.AboutPage;
 import mehdi.sakout.aboutpage.Element;
 
 public class AboutUs extends AppCompatActivity {
 
-    Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
-
-        toolbar = findViewById(R.id.toolbarAboutUs);
-
-        toolbar = findViewById(R.id.toolbarAllprod);
-//        setSupportActionBar(toolbar);
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("About Us");
-        }
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
@@ -47,13 +34,6 @@ public class AboutUs extends AppCompatActivity {
                 }))
                 .create();
         setContentView(aboutPage);
-        setSupportActionBar(toolbar);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 
 }

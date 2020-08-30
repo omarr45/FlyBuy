@@ -34,13 +34,14 @@ public class ShoppingCart extends AppCompatActivity {
     Toolbar toolbar;
   //  CartDatabase cartDatabase;
    public static ProductDatabase productDatabase;
-   //List<ProductDatabase>productDatabases;
    private CartAdapter adapter;
     Button checkout;
     Context context;
     public static List<Product>productList;
     public List<Cart>pCart;
     private RecyclerView recyclerView;
+    public static float itemPrice,totalPrice;
+    TextView total;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,9 @@ public class ShoppingCart extends AppCompatActivity {
         productDatabase=ProductDatabase.getInstance(this);
         checkout = findViewById(R.id.checkout_button);
 
+
+          total=findViewById(R.id.total);
+          total.setText((int) totalPrice);
         //  productList
 
         toolbar = findViewById(R.id.toolbarCart);
@@ -64,6 +68,7 @@ public class ShoppingCart extends AppCompatActivity {
 
         Intent in = getIntent();
         final int id = in.getIntExtra("id", 50);
+        final int quantity=in.getIntExtra("quantity",1);
         recyclerView = findViewById(R.id.shopping_recycler_view);
         adapter = new CartAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -85,26 +90,23 @@ public class ShoppingCart extends AppCompatActivity {
                         @Override
                         public void onSuccess(List<Product> products) {
                             productList.add(products.get(0));
-                            Log.i("product", productList.size() + "");
 
                             c_database.cartDao().addToCart(new Cart(productList.get(0).getId(), productList.get(0).getName()
-                                    , productList.get(0).getPrice(), productList.get(0).getImg1(), 1))
+                                    , (productList.get(0).getPrice()*quantity), productList.get(0).getImg1(), quantity))
                                     .subscribeOn(Schedulers.computation())
                                     .subscribe(new CompletableObserver() {
                                         @Override
                                         public void onSubscribe(Disposable d) {
-                                            Log.e("TAG", "onSubscribe: ");
                                         }
 
                                         @Override
                                         public void onComplete() {
-                                            Log.e("TAG", "onComplete: ");
+                                            itemPrice+=(productList.get(0).getPrice()*quantity);
 
                                         }
 
                                         @Override
                                         public void onError(Throwable e) {
-                                            Log.e("TAG", "onError: " + e.getMessage());
                                         }
                                     });
 
@@ -126,18 +128,19 @@ public class ShoppingCart extends AppCompatActivity {
                 .subscribe(new SingleObserver<List<Cart>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        Log.e("TAG", "onSubscribe: " + d.toString());
                     }
 
                     @Override
                     public void onSuccess(List<Cart> cartList) {
-                        Log.e("TAG", "onSuccess: " + cartList.size());
+                        for(int i=0; i<cartList.size();i++) {
+                            totalPrice += (cartList.get(i).getCart_item_price());
+                            Log.i("total",String.valueOf(totalPrice));
+                        }
                         adapter.setList(cartList);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e("TAG", "onError: " + e.getMessage());
 
                     }
                 });

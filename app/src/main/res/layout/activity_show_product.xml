@@ -168,6 +168,11 @@
 
             </androidx.cardview.widget.CardView>
 
+            <NumberPicker
+                android:id="@+id/item_quantity"
+                android:layout_width="47dp"
+                android:layout_height="96dp"/>
+
         </LinearLayout>
 
     </ScrollView>

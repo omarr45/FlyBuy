@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -34,6 +35,9 @@ public class ShowProduct extends AppCompatActivity {
 
     Button addToCart;
     int flag = 0;
+    private NumberPicker item_quantity;
+    private String [] numberPicker;
+    int quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,22 @@ public class ShowProduct extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_product);
+
+        item_quantity = findViewById(R.id.item_quantity);
+        item_quantity.setMaxValue(10);
+        item_quantity.setMinValue(1);
+
+          numberPicker=new String[]{"1","2","3","4","5","6","7","8","9","10"};
+          item_quantity.setDisplayedValues(numberPicker);
+
+          item_quantity.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+              @Override
+              public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                   quantity=item_quantity.getValue();
+
+              }
+          });
+
 
         toolbar = findViewById(R.id.toolbarShowProd);
         setSupportActionBar(toolbar);
@@ -62,16 +82,13 @@ public class ShowProduct extends AppCompatActivity {
                 .subscribe(new SingleObserver<List<Cart>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        Log.e("TAG", "onSubscribe: "+d.toString() );
                     }
 
                     @Override
                     public void onSuccess(List<Cart> cartList) {
-                        Log.e("TAG", "onSuccess: "+cartList.size() );
                         for(int i=0;i<cartList.size();i++)
                         {
-                            Log.e("TAG", "onSuccess: " + id);
-                            Log.e("TAG", "onSuccess: " + (cartList.get(i).getCart_item_id()));
+
                             if((cartList.get(i).getCart_item_id()) == id){
                                 flag =1;
                                 break;
@@ -133,6 +150,7 @@ public class ShowProduct extends AppCompatActivity {
             public void onClick(View view) {
                 Intent in = new Intent(ShowProduct.this, ShoppingCart.class);
                 in.putExtra("id", id);
+                in.putExtra("quantity",quantity);
                 Log.e("TAG", "onClick: "+id );
                 startActivity(in);
             }

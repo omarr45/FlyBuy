@@ -16,13 +16,12 @@ public class OrderConfirmed extends AppCompatActivity {
     Random order_number_generator;
     TextView order_number;
 
+
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_confirmed);
 
-        final CartDatabase cartDatabase=CartDatabase.getInstance(this);
-       // cartDatabase.cartDao().deleteAll();
 
         backToHome = findViewById(R.id.backtohome);
         order_number_generator=new Random();

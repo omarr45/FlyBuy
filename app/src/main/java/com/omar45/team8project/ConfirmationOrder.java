@@ -29,7 +29,8 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
     ArrayList<Address> addresses;
     Geocoder geocoder;
     Intent receive;
-    //TextView second;
+    TextView second;
+    CartDatabase cartDatabase;
 
 
     @Override
@@ -38,11 +39,10 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.confirmation_order);
 
 
-        //String add = "";
+        String add = "";
 
        //second = (TextView) findViewById(R.id.myTxtlocation);
-
-
+        cartDatabase=CartDatabase.getInstance(this);
 
 
 
@@ -62,7 +62,7 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
                 {
 
                     Toast.makeText(this,addresses.get(0).getThoroughfare() , Toast.LENGTH_SHORT).show();
-                     //add = addresses.get(0).getThoroughfare().toString();
+                     add = addresses.get(0).getThoroughfare().toString();
                 }
 
             }
@@ -91,6 +91,7 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         startActivity(new Intent(ConfirmationOrder.this, OrderConfirmed.class));
+
 
     }
 

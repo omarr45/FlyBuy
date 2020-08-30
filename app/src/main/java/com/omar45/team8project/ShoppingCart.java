@@ -64,7 +64,7 @@ public class ShoppingCart extends AppCompatActivity {
 
         Intent in = getIntent();
         final int id = in.getIntExtra("id", 50);
-         recyclerView = findViewById(R.id.shopping_recycler_view);
+        recyclerView = findViewById(R.id.shopping_recycler_view);
         adapter = new CartAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -72,6 +72,7 @@ public class ShoppingCart extends AppCompatActivity {
         final CartDatabase c_database = CartDatabase.getInstance(this);
         final ProductDatabase p_database=ProductDatabase.getInstance(this);
 
+        if (id!=50) {
             p_database.productDao().getProductID(id)
                     .subscribeOn(Schedulers.computation())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -84,51 +85,31 @@ public class ShoppingCart extends AppCompatActivity {
                         @Override
                         public void onSuccess(List<Product> products) {
                             productList.add(products.get(0));
-                            Log.i("product",productList.size()+"");
+                            Log.i("product", productList.size() + "");
 
-                            c_database.cartDao().addToCart(new Cart(productList.get(0).getId(),productList.get(0).getName()
-                                    ,productList.get(0).getPrice(),productList.get(0).getImg1(),1))
+                            c_database.cartDao().addToCart(new Cart(productList.get(0).getId(), productList.get(0).getName()
+                                    , productList.get(0).getPrice(), productList.get(0).getImg1(), 1))
                                     .subscribeOn(Schedulers.computation())
-                                    .subscribe( new CompletableObserver() {
-                                                   @Override
-                                                   public void onSubscribe(Disposable d) {
-                                                       Log.e("TAG", "onSubscribe: " );
-                                                   }
+                                    .subscribe(new CompletableObserver() {
+                                        @Override
+                                        public void onSubscribe(Disposable d) {
+                                            Log.e("TAG", "onSubscribe: ");
+                                        }
 
-                                                   @Override
-                                                   public void onComplete() {
-                                                       Log.e("TAG","onComplete: " );
-                                                       c_database.cartDao().getCartItems()
-                                                               .subscribeOn(Schedulers.computation())
-                                                               .observeOn(AndroidSchedulers.mainThread())
-                                                              .subscribe(new SingleObserver<List<Cart>>() {
-                                                                  @Override
-                                                                  public void onSubscribe(Disposable d) {
-                                                                      Log.e("TAG", "onSubscribe: "+d.toString() );
-                                                                  }
+                                        @Override
+                                        public void onComplete() {
+                                            Log.e("TAG", "onComplete: ");
 
-                                                                  @Override
-                                                                  public void onSuccess(List<Cart> cartList) {
-                                                                      Log.e("TAG", "onSuccess: "+cartList.size() );
-                                                                        adapter.setList(cartList);
-                                                                  }
+                                        }
 
-                                                                  @Override
-                                                                  public void onError(Throwable e) {
-                                                                      Log.e("TAG", "onError: "+e.getMessage());
+                                        @Override
+                                        public void onError(Throwable e) {
+                                            Log.e("TAG", "onError: " + e.getMessage());
+                                        }
+                                    });
 
-                                                                  }
-                                                              });
-
-                                                   }
-
-                                                   @Override
-                                                   public void onError(Throwable e) {
-                                                       Log.e("TAG", "onError: "+e.getMessage());
-                                                   }
-                                               });
-                                            //adapter.addToCart(productList);
-                                            adapter.notifyDataSetChanged();
+                            //adapter.addToCart(productList);
+                            adapter.notifyDataSetChanged();
 
                         }
 
@@ -137,8 +118,31 @@ public class ShoppingCart extends AppCompatActivity {
 
                         }
                     });
+        }
 
-            checkout.setOnClickListener(new View.OnClickListener() {
+        c_database.cartDao().getCartItems()
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Cart>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.e("TAG", "onSubscribe: " + d.toString());
+                    }
+
+                    @Override
+                    public void onSuccess(List<Cart> cartList) {
+                        Log.e("TAG", "onSuccess: " + cartList.size());
+                        adapter.setList(cartList);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("TAG", "onError: " + e.getMessage());
+
+                    }
+                });
+
+        checkout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     startActivity(new Intent(ShoppingCart.this, ConfirmationOrder.class));

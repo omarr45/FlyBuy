@@ -9,5 +9,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="about_us">FlyBuy is a project developed by Omar AdbulRahman and Aboelwfaa Sadeek as a graduation project from the Android course offered by FCIS and iHub.</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

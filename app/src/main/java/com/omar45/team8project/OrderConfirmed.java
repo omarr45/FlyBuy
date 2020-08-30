@@ -19,10 +19,14 @@ public class OrderConfirmed extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_confirmed);
 
+        final CartDatabase cartDatabase=CartDatabase.getInstance(this);
+       // cartDatabase.cartDao().deleteAll();
+
         order_number_generator=new Random();
         order_number =findViewById(R.id.order_number);
 
         order_number.setText(String.valueOf(order_number_generator.nextInt(1000)));
+
 
     }
 

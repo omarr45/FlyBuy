@@ -19,4 +19,7 @@ public interface CartDao {
 
     @Query("SELECT * FROM cart WHERE cart_item_id = :ID")
     Single<List<Cart>> getCartID(int ID);
+
+//    @Query("Delete From Cart")
+//    Void deleteAll();
 }

@@ -1,88 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/beige"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".OrderConfirmed">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAllprod"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:title="Order Confirmed"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="40dp"
         app:cardElevation="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="58dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="70dp">
+        android:layout_marginTop="100dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="match_parent">
 
-            >
+            <ImageView
+                android:src="@drawable/logo_banner_cropped"
+                android:layout_width="250dp"
+                android:layout_height="100dp"/>
 
             <TextView
                 android:id="@+id/thank_you"
-                android:layout_width="182dp"
-                android:layout_height="57dp"
-                android:layout_marginStart="98dp"
-                android:layout_marginTop="29dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Thank You!"
                 android:textColor="@color/navyBlue"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/order_number_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="39dp"
-                android:layout_marginTop="129dp"
-                android:text="ORDER NUMBER:  "
-                android:textSize="17dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="8sp"
+                android:text="\n"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/order_number_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ORDER NUMBER:    "
+                    android:textSize="18dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/order_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/navyBlue"
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/order_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="128dp"
-                android:layout_marginEnd="92dp"
-                android:text="TextView"
-                android:textColor="@color/navyBlue"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="8dp"
+                android:text="\n"/>
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="341dp"
-                android:layout_height="61dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginBottom="84dp"
-                android:text="Congratulations! Your order was Successfully placed."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Congratulations! Your order was successfully placed."
                 android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textStyle="bold"/>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/backtohome"
+        android:text="Back to Home"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:background="@drawable/round_button"
+        android:layout_marginTop="100dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"/>
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 

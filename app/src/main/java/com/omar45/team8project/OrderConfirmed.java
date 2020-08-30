@@ -11,8 +11,10 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class OrderConfirmed extends AppCompatActivity {
-     Random order_number_generator;
-     TextView order_number;
+
+    Button backToHome;
+    Random order_number_generator;
+    TextView order_number;
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +24,19 @@ public class OrderConfirmed extends AppCompatActivity {
         final CartDatabase cartDatabase=CartDatabase.getInstance(this);
        // cartDatabase.cartDao().deleteAll();
 
+        backToHome = findViewById(R.id.backtohome);
         order_number_generator=new Random();
         order_number =findViewById(R.id.order_number);
 
         order_number.setText(String.valueOf(order_number_generator.nextInt(1000)));
+
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(OrderConfirmed.this, MainActivity.class));
+                finish();
+            }
+        });
 
 
     }

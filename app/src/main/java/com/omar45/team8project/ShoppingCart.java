@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -89,6 +90,7 @@ public class ShoppingCart extends AppCompatActivity {
 
                                         @Override
                                         public void onComplete() {
+                                            adapter.notifyDataSetChanged();
                                         }
 
                                         @Override
@@ -102,7 +104,16 @@ public class ShoppingCart extends AppCompatActivity {
 
                         }
                     });
+            Toast.makeText(this, "Item was added successfully", Toast.LENGTH_LONG).show();
+            finish();
         }
+
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ShoppingCart.this, ConfirmationOrder.class));
+            }
+        });
 
         c_database.cartDao().getCartItems()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -133,12 +144,6 @@ public class ShoppingCart extends AppCompatActivity {
                     }
                 });
 
-        checkout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(ShoppingCart.this, ConfirmationOrder.class));
-                }
-            });
         }
 
     @Override

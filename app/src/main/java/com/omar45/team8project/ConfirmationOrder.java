@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class ConfirmationOrder extends AppCompatActivity implements View.OnClickListener {
+
+    Toolbar toolbar;
     Button confirm;
     double Longitude;
     double Latitude;
@@ -44,7 +47,13 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
        //second = (TextView) findViewById(R.id.myTxtlocation);
         cartDatabase=CartDatabase.getInstance(this);
 
+        toolbar = findViewById(R.id.toolbarConf);
+        setSupportActionBar(toolbar);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("All Products");
+        }
 
 
        receive = getIntent();
@@ -61,7 +70,7 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
                 if (addresses.get(0).getThoroughfare() != null)
                 {
 
-                    Toast.makeText(this,addresses.get(0).getThoroughfare() , Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this,addresses.get(0).getThoroughfare() , Toast.LENGTH_SHORT).show();
                      add = addresses.get(0).getThoroughfare().toString();
                 }
 
@@ -100,6 +109,13 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
         Intent intent = new Intent(ConfirmationOrder.this , MapsActivity.class);
         startActivity(intent);
 
-
     }
+
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

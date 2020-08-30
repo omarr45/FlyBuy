@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
 import java.util.Random;
 
 public class OrderConfirmed extends AppCompatActivity {
@@ -28,6 +29,10 @@ public class OrderConfirmed extends AppCompatActivity {
         order_number =findViewById(R.id.order_number);
 
         order_number.setText(String.valueOf(order_number_generator.nextInt(1000)));
+
+        final CartDatabase cartDatabase=CartDatabase.getInstance(this);
+
+        cartDatabase.cartDao().deleteAll();
 
         backToHome.setOnClickListener(new View.OnClickListener() {
             @Override

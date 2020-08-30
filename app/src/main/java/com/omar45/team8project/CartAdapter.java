@@ -52,7 +52,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         Log.e("TAG","onBindViewHolder"+position);
         holder.p_name.setText(cartList.get(position).getCart_item_name());
         holder.p_price.setText((String.valueOf(cartList.get(position).getCart_item_price())));
+        holder.quantity.setText("Quantity:  "+String.valueOf(cartList.get(position).getCart_item_quantity()));
+        Log.i("quantity",String.valueOf(cartList.get(position).getCart_item_quantity()));
         Glide.with(context).load(cartList.get(position).getCart_item_img().toString()).into(holder.p_img1);
+
     }
 
     @Override
@@ -62,37 +65,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         this.cartList=cartList;
         notifyDataSetChanged();
     }
-//    public void addToCart(List<Product> cartList){
-//        cartDatabase.cartDao().addToCart(new Cart(cartList.get(0).getId(),cartList.get(0).getName()
-//                ,cartList.get(0).getPrice(),cartList.get(0).getImg1()))
-//                .subscribeOn(Schedulers.computation())
-//                .subscribe(new CompletableObserver() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//                });
-//        notifyDataSetChanged();
-//    }
+
 
     public class CartViewHolder extends RecyclerView.ViewHolder {
         TextView p_name,p_price;
         ImageView p_img1;
+        TextView quantity;
         public CartViewHolder(View itemView) {
             super(itemView);
             p_name=itemView.findViewById(R.id.item_name);
             p_price=itemView.findViewById(R.id.item_price);
             p_img1=itemView.findViewById(R.id.item_image);
+            quantity=itemView.findViewById(R.id.quantity);
 
         }
         }

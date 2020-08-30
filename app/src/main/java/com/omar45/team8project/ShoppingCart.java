@@ -131,7 +131,7 @@ public class ShoppingCart extends AppCompatActivity {
                         recyclerView.setAdapter(adapter);
 
                         for(int i=0; i<cartList.size(); i++) {
-                            totalPrice += (1.0 * cartList.get(i).getCart_item_price() * quantity);
+                            totalPrice += (1.0 * (cartList.get(i).getCart_item_price() * cartList.get(i).getCart_item_quantity()));
                             Log.i("total",String.valueOf(totalPrice));
                         }
 

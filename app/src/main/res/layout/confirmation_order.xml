@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:theme="?attr/actionBarTheme" />
+        app:title="Confirm your order"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <TextView
         android:id="@+id/delivery_option_text"
@@ -109,7 +110,7 @@
         android:id="@+id/confirm_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="300dp"
         android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimary"
         android:text="Confirm Order"

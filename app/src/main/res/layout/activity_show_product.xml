@@ -187,5 +187,4 @@
         android:textColor="@color/white"
         android:background="@color/colorPrimary"/>
 
-
 </LinearLayout>

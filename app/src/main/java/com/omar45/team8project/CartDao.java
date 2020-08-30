@@ -15,7 +15,7 @@ public interface CartDao {
     Completable addToCart(Cart cart);
 
     @Query(" select * from Cart")
-    Single<Cart> getCartItems();
+    Single<List<Cart>> getCartItems();
 
     @Query("SELECT * FROM cart WHERE cart_item_id = :ID")
     Single<List<Cart>> getCartID(int ID);

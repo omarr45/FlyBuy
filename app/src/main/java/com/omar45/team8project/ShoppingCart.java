@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.facebook.appevents.suggestedevents.ViewOnClickListener;
 
+import io.reactivex.CompletableObserver;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -25,6 +27,8 @@ import io.reactivex.schedulers.Schedulers;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.security.auth.login.LoginException;
 
 public class ShoppingCart extends AppCompatActivity {
     Toolbar toolbar;
@@ -35,6 +39,7 @@ public class ShoppingCart extends AppCompatActivity {
     Button checkout;
     Context context;
     public static List<Product>productList;
+    public List<Cart>pCart;
     private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +70,7 @@ public class ShoppingCart extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         final CartDatabase c_database = CartDatabase.getInstance(this);
-         ProductDatabase p_database=ProductDatabase.getInstance(this);
+        final ProductDatabase p_database=ProductDatabase.getInstance(this);
 
             p_database.productDao().getProductID(id)
                     .subscribeOn(Schedulers.computation())
@@ -79,9 +84,51 @@ public class ShoppingCart extends AppCompatActivity {
                         @Override
                         public void onSuccess(List<Product> products) {
                             productList.add(products.get(0));
-                             adapter.setList(productList);
-                            //adapter.addToCart(productList);
-                            adapter.notifyDataSetChanged();
+                            Log.i("product",productList.size()+"");
+
+                            c_database.cartDao().addToCart(new Cart(productList.get(0).getId(),productList.get(0).getName()
+                                    ,productList.get(0).getPrice(),productList.get(0).getImg1(),1))
+                                    .subscribeOn(Schedulers.computation())
+                                    .subscribe( new CompletableObserver() {
+                                                   @Override
+                                                   public void onSubscribe(Disposable d) {
+                                                       Log.e("TAG", "onSubscribe: " );
+                                                   }
+
+                                                   @Override
+                                                   public void onComplete() {
+                                                       Log.e("TAG","onComplete: " );
+                                                       c_database.cartDao().getCartItems()
+                                                               .subscribeOn(Schedulers.computation())
+                                                               .observeOn(AndroidSchedulers.mainThread())
+                                                              .subscribe(new SingleObserver<List<Cart>>() {
+                                                                  @Override
+                                                                  public void onSubscribe(Disposable d) {
+                                                                      Log.e("TAG", "onSubscribe: "+d.toString() );
+                                                                  }
+
+                                                                  @Override
+                                                                  public void onSuccess(List<Cart> cartList) {
+                                                                      Log.e("TAG", "onSuccess: "+cartList.size() );
+                                                                        adapter.setList(cartList);
+                                                                  }
+
+                                                                  @Override
+                                                                  public void onError(Throwable e) {
+                                                                      Log.e("TAG", "onError: "+e.getMessage());
+
+                                                                  }
+                                                              });
+
+                                                   }
+
+                                                   @Override
+                                                   public void onError(Throwable e) {
+                                                       Log.e("TAG", "onError: "+e.getMessage());
+                                                   }
+                                               });
+                                            //adapter.addToCart(productList);
+                                            adapter.notifyDataSetChanged();
 
                         }
 

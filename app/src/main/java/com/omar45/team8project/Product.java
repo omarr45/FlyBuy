@@ -15,6 +15,7 @@ public class Product {
     private String img1;
     private String img2;
 
+
     public Product() { }
 
     public Product(int id, int category_id, String name, float price, String description, String specifications, String img1, String img2) {

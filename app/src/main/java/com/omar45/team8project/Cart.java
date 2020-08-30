@@ -14,12 +14,12 @@ public class Cart {
 
     public Cart() { }
 
-    public Cart(int id, String name, float price, String img) {
+    public Cart(int id, String name, float price, String img,int quantity) {
         this.cart_item_id = id;
         this.cart_item_name = name;
         this.cart_item_price = price;
         this.cart_item_img = img;
-      //  this.cart_item_quantity=quantity;
+       this.cart_item_quantity=quantity;
     }
 
     public int getCart_item_id() {

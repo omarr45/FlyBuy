@@ -13,11 +13,10 @@
     app:cardElevation="20dp"
     android:background="@color/beige">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
-
 
         <ImageView
             android:id="@+id/item_image"
@@ -27,58 +26,45 @@
             android:src="@drawable/airpods1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
-
-        <TextView
-            android:id="@+id/item_name"
-            android:layout_width="235dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="7dp"
-            android:text="Product Name"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toEndOf="@+id/item_image"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <TextView
-            android:id="@+id/item_price"
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="125dp"
-            android:fontFamily="@font/exo2_bold"
-            android:text="4,099 EGP"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="149dp"
-            android:layout_marginBottom="35dp"
-            android:text="Quantity:"
-            android:textColor="@color/black"
-            android:textSize="22dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:singleLine="true"
+                android:text="Product Name"
+                android:textSize="18dp"
+                android:fontFamily="@font/exo2_regular"
+                android:textColor="@color/black"/>
 
-        <NumberPicker
-            android:id="@+id/item_quantity"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="250dp"
-            android:layout_marginTop="53dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/exo2_bold"
+                android:textColor="@color/black"
+                android:text="4,099 EGP"
+                android:textSize="18dp"/>
 
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/exo2_regular"
+                android:textColor="@color/black"
+                android:text="Quantity:"
+                android:textSize="18dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 
 </androidx.cardview.widget.CardView>

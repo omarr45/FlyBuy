@@ -1,8 +1,6 @@
 package com.omar45.team8project;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,25 +17,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.CompletableObserver;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder>  {
-    private ArrayList<String> idList = new ArrayList<>();
+    public static List<Product> cartList=new ArrayList<>();
+    public static List<Cart>products=new ArrayList<>();
+    //private List<Cart>c_list=new ArrayList<>();
     private Context context;
-    private ProductClickListener productClickListener;
-    private List<Product> productList = new ArrayList<>();
-    public static float total=0;
-
-
+    private Product product;
+    private CartDatabase cartDatabase;
 
 
     @NonNull
     @Override
     public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CartViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item, parent, false));
+        return new CartViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_cart_item, parent, false));
     }
 
     public CartAdapter(Context context) {
@@ -46,76 +44,73 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     public CartAdapter(Context context, ProductClickListener productClickListener) {
         this.context = context;
-        this.productClickListener = productClickListener;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final CartViewHolder holder, final int position) {
-        final ProductDatabase database = ProductDatabase.getInstance(context);
-
-        for ( int i = 0; i < idList.size();i++){
-            database.productDao().getProductID(Integer.parseInt(idList.get(i)))
-                    .subscribeOn(Schedulers.computation())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new SingleObserver<List<Product>>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-
-                        }
-
-                        @Override
-                        public void onSuccess(List<Product> products) {
-
-                            productList.add(products.get(0));
-                            total += productList.get(position).getPrice();
-
-                            try {
-                                holder.p_name.setText(productList.get(position).getName());
-                                holder.p_price.setText(String.format("%s EGP", productList.get(position).getPrice()));
-                                Glide.with(context).load(productList.get(position).getImg1().toString()).into(holder.p_img1);
-                            }
-                            catch(Exception e)
-                            {
-                                e.printStackTrace();
-                            }
-
-                            total += productList.get(position).getPrice();
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            e.printStackTrace();
-
-                        }
-                    });
-        }
-
-
+        holder.p_name.setText(products.get(position).getCart_item_name());
+        holder.p_price.setText((String.valueOf(products.get(position).getCart_item_price())));
+        Glide.with(context).load(products.get(position).getCart_item_img().toString()).into(holder.p_img1);
     }
 
     @Override
-    public int getItemCount() {
-        return idList.size(); }
+    public int getItemCount() {return cartList.size();};
 
-    public void setList(SharedPreferences sh) {
-        try {
-            this.idList = (ArrayList<String>)ObjectSerializer.deserialize(sh.getString("ID" , ObjectSerializer.serialize(new ArrayList<>())));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void setList(List<Product> List) {
+        this.cartList=List;
+        cartDatabase.cartDao().addToCart(new Cart(List.get(0).getId(),List.get(0).getName()
+                ,List.get(0).getPrice(),List.get(0).getImg1()))
+                .subscribeOn(Schedulers.computation())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
         notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
+//    public void addToCart(List<Product> cartList){
+//        cartDatabase.cartDao().addToCart(new Cart(cartList.get(0).getId(),cartList.get(0).getName()
+//                ,cartList.get(0).getPrice(),cartList.get(0).getImg1()))
+//                .subscribeOn(Schedulers.computation())
+//                .subscribe(new CompletableObserver() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//                });
+//        notifyDataSetChanged();
+//    }
 
     public class CartViewHolder extends RecyclerView.ViewHolder {
         TextView p_name,p_price;
         ImageView p_img1;
-        @SuppressLint("ResourceType")
-
         public CartViewHolder(View itemView) {
             super(itemView);
-            p_name=itemView.findViewById(R.id.product_Name);
-            p_price=itemView.findViewById(R.id.product_Price);
-            p_img1=itemView.findViewById(R.id.product_Image);
+            p_name=itemView.findViewById(R.id.item_name);
+            p_price=itemView.findViewById(R.id.item_price);
+            p_img1=itemView.findViewById(R.id.item_image);
 
         }
         }

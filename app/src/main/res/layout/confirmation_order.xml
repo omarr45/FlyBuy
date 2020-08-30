@@ -82,18 +82,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <EditText
-                android:id="@+id/client_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="78dp"
-                android:layout_marginTop="122dp"
-                android:ems="10"
-                android:hint="0123456789"
-                android:inputType="phone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageButton
                 android:id="@+id/address_change_button"
                 android:layout_width="36dp"
@@ -140,8 +128,8 @@
 
 
             <RadioGroup
-                android:layout_width="199dp"
-                android:layout_height="83dp"
+                android:layout_width="184dp"
+                android:layout_height="52dp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="9dp">
 
@@ -151,11 +139,6 @@
                     android:layout_height="wrap_content"
                     android:text="Cash on delivery" />
 
-                <RadioButton
-                    android:id="@+id/visa_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Visa" />
             </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

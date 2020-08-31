@@ -26,13 +26,13 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
 
     Toolbar toolbar;
     Button confirm;
-    double Longitude;
-    double Latitude;
-    ArrayList<Address> addresses;
+    double Longitude,Latitude;
     Geocoder geocoder;
     Intent receive;
     TextView address;
     CartDatabase cartDatabase;
+    ArrayList<Address> addresses;
+
 
 
     @Override
@@ -40,11 +40,18 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirmation_order);
 
+
+        toolbar = findViewById(R.id.toolbarConf);
         address = findViewById(R.id.address_details);
+        confirm =findViewById(R.id.confirm_button);
+
+        confirm.setOnClickListener(this);
+
+
+
 
         cartDatabase=CartDatabase.getInstance(this);
 
-        toolbar = findViewById(R.id.toolbarConf);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
@@ -78,18 +85,6 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//       try {
-//           second.setText(add);
-//       }
-//       catch(Exception e)
-//       {
-//           e.printStackTrace();
-//       }
-
-        confirm =findViewById(R.id.confirm_button);
-
-        confirm.setOnClickListener(this);
 
     }
 

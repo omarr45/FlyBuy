@@ -28,13 +28,14 @@ import java.util.List;
 
 public class ShoppingCart extends AppCompatActivity {
 
-    Toolbar toolbar;
+
     public static ProductDatabase productDatabase;
     private CartAdapter adapter;
-    Button checkout;
     private RecyclerView recyclerView;
     public float totalPrice;
+    Toolbar toolbar;
     TextView _total;
+    Button checkout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

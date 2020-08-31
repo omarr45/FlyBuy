@@ -18,8 +18,6 @@ import java.util.List;
 
 public class CategorySearch extends AppCompatActivity implements ProductClickListener {
 
-    Toolbar toolbar;
-
     /* Categories:
         1. Mobiles
         2. TVs
@@ -30,7 +28,9 @@ public class CategorySearch extends AppCompatActivity implements ProductClickLis
         7. Kids Wear
         8. Men Wear
     * */
+
     private ProductsAdapter adapter;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,7 @@ public class CategorySearch extends AppCompatActivity implements ProductClickLis
         Intent intent = getIntent();
         int category = intent.getIntExtra("category", 1);
 
+        //Setting Toolbar title
         switch (category) {
             case 1:
                 if (getSupportActionBar() != null) {

@@ -25,57 +25,53 @@ import java.util.List;
 
 public class ShowProduct extends AppCompatActivity {
 
+    Toolbar toolbar;
+    TextView prodName, prodPrice;
+    Button addToCart;
     ImageSlider imageSlider;
     ExpandableTextView prodDesc, prodSpecs;
 
     ProductDatabase productDatabase;
+    CartDatabase c_database;
 
-    Toolbar toolbar;
-    TextView prodName, prodPrice;
-
-    Button addToCart;
     int flag = 0;
     private NumberPicker item_quantity;
     private String [] numberPicker;
-    int quantity;
+    int quantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_product);
-
-        item_quantity = findViewById(R.id.item_quantity);
-        item_quantity.setMaxValue(10);
-        item_quantity.setMinValue(1);
-
-          numberPicker=new String[]{"1","2","3","4","5","6","7","8","9","10"};
-          item_quantity.setDisplayedValues(numberPicker);
-
-          item_quantity.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-              @Override
-              public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                   quantity=item_quantity.getValue();
-
-              }
-          });
-
 
         toolbar = findViewById(R.id.toolbarShowProd);
         setSupportActionBar(toolbar);
 
+        numberPicker = new String[]{"1","2","3","4","5","6","7","8","9","10"};
+
+        item_quantity = findViewById(R.id.item_quantity);
+        item_quantity.setMaxValue(10);
+        item_quantity.setMinValue(1);
+        item_quantity.setDisplayedValues(numberPicker);
+        item_quantity.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+          @Override
+          public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+               quantity=item_quantity.getValue();
+
+          }
+        });
+
         imageSlider = findViewById(R.id.imageSlider);
         addToCart   = findViewById(R.id.add_to_cart);
-
-        prodName = findViewById(R.id.productName);
-        prodPrice = findViewById(R.id.productPrice);
+        prodName    = findViewById(R.id.productName);
+        prodPrice   = findViewById(R.id.productPrice);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id", 1);
-        CartDatabase c_database=CartDatabase.getInstance(this);
+
+        c_database = CartDatabase.getInstance(this);
         productDatabase = ProductDatabase.getInstance(this);
+
         c_database.cartDao().getCartItems()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -107,16 +103,17 @@ public class ShowProduct extends AppCompatActivity {
 
                     }
                 });
-        productDatabase.productDao().getProductID(id).subscribeOn(Schedulers.computation())
+
+        productDatabase.productDao().getProductID(id)
+                .subscribeOn(Schedulers.computation())
                 .subscribe(new SingleObserver<List<Product>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
-
-
                     @Override
                     public void onSuccess(List<Product> products) {
+
                         if (getSupportActionBar() != null) {
                             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                             getSupportActionBar().setTitle(products.get(0).getName());
@@ -143,14 +140,12 @@ public class ShowProduct extends AppCompatActivity {
                     }
                 });
 
-
-
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(ShowProduct.this, ShoppingCart.class);
                 in.putExtra("id", id);
-                in.putExtra("quantity",quantity);
+                in.putExtra("quantity", quantity);
                 Log.e("TAG", "onClick: "+id );
                 startActivity(in);
             }

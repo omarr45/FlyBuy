@@ -25,9 +25,9 @@ public class OrderConfirmed extends AppCompatActivity {
 
 
         backToHome = findViewById(R.id.backtohome);
-        order_number_generator=new Random();
         order_number =findViewById(R.id.order_number);
 
+        order_number_generator=new Random();
         order_number.setText(String.valueOf(order_number_generator.nextInt(1000)));
 
 //        final CartDatabase cartDatabase=CartDatabase.getInstance(this);

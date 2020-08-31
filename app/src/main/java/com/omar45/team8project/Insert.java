@@ -38,7 +38,6 @@ public class Insert extends AppCompatActivity implements ProductClickListener {
         p_price=findViewById(R.id.p_price);
         p_description=findViewById(R.id.p_description);
         p_specs=findViewById(R.id.p_specs);
-       // c_id=findViewById(R.id.c_id);
         p_img=findViewById(R.id.p_img1);
 
 

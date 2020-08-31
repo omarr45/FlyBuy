@@ -63,13 +63,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         signUp.setOnClickListener(this);
         loginNormal.setOnClickListener(this);
 
-        ////////////////////////////////////////////////////////////// Enable this to jump over login screen if already logged in
+        ///////////////////////////////// Enable this to jump over login screen if already logged in
         //FireBase
         if (fAuth.getCurrentUser()!=null) {
             startActivity(new Intent(SignInActivity.this, MainActivity.class));
             finish();
         }
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
         //Facebook Stuff
         callbackManager = CallbackManager.Factory.create();
@@ -104,7 +104,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    ///Temporary intents
+    ///Intents
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -135,6 +135,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                             Intent intentMain = new Intent(SignInActivity.this, MainActivity.class);
                             intentMain.putExtra("email", _email);
                             startActivity(intentMain);
+                            progressBar.setVisibility(View.INVISIBLE);
                             finish();
                         } else {
                             Toast.makeText(SignInActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.FocusFinder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -55,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         number      = findViewById(R.id.phoneNumber);
         email       = findViewById(R.id.email);
         password    = findViewById(R.id.password);
-        confPassword = findViewById(R.id.confirmPassword);
+        confPassword= findViewById(R.id.confirmPassword);
 
         //TextViews
         signIn      = findViewById(R.id.signInText);
@@ -73,20 +74,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         fAuth       = FirebaseAuth.getInstance();
         database    = FirebaseDatabase.getInstance();
         userRef     = database.getReference(USERS);
-
-        userRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    ;
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         mDate = new DatePickerDialog.OnDateSetListener() {
 
@@ -132,6 +119,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 final String _email = email.getText().toString().trim();
                 String _password = password.getText().toString().trim();
                 String _passwordConfirm = confPassword.getText().toString().trim();
+
                 user = new User(_name, _birthday, _number, _email, _password);
 
                 if(_name.isEmpty()) {
@@ -175,6 +163,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             Intent intentMain = new Intent(SignUpActivity.this, MainActivity.class);
                             intentMain.putExtra("email", _email);
                             startActivity(intentMain);
+                            finish();
                         } else {
                             Toast.makeText(SignUpActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);

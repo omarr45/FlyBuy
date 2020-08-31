@@ -32,28 +32,25 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    DrawerLayout drawerLayout;
-    Toolbar toolbar;
-    ImageSlider imageSlider;
-    CardView mobiles, tvs, perfumes, gaming, accessories, womenWear, kidsWear, menWear;
+    Toolbar         toolbar;
+    DrawerLayout    drawerLayout;
+    ImageSlider     imageSlider;
+    CardView        mobiles, tvs, perfumes, gaming, accessories, womenWear, kidsWear, menWear;
+
     ProductDatabase productDatabase;
-    FirebaseAuth fAuth;
-    String currentEmail;
+    FirebaseAuth    fAuth;
+    String          currentEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intentt = getIntent();
-        currentEmail = intentt.getStringExtra("email");
-
-        fAuth = FirebaseAuth.getInstance();
+        Intent intent2 = getIntent();
+        currentEmail = intent2.getStringExtra("email");
 
         toolbar = findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
-
-        FacebookSdk.getApplicationContext();
 
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navView);
@@ -92,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        FacebookSdk.getApplicationContext();
+
+        fAuth = FirebaseAuth.getInstance();
 
         productDatabase = ProductDatabase.getInstance(this);
 
@@ -159,26 +160,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
-    private void checkData() {
-        productDatabase.productDao().getProduct().subscribeOn(Schedulers.computation()).subscribe(new SingleObserver<List<Product>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onSuccess(List<Product> products) {
-                if(products.size()==0)
-                    loadData();
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-        });
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -206,6 +187,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent2);
         }
         return true;
+    }
+
+    private void checkData() {
+        productDatabase.productDao().getProduct().subscribeOn(Schedulers.computation()).subscribe(new SingleObserver<List<Product>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onSuccess(List<Product> products) {
+                if(products.size()==0)
+                    loadData();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+        });
     }
 
     private void loadData() {

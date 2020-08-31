@@ -18,7 +18,7 @@ import io.reactivex.Single;
         Completable insertProduct(Product product);
 
         @Query("select * From product_table")
-        Single<List<Product>> getProduct();
+        Single<List<Product>> getProducts();
 
         @Query("SELECT * FROM product_table WHERE category_id = :catID")
         Single<List<Product>> getProductCat(int catID);

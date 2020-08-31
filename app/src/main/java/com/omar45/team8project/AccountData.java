@@ -77,5 +77,4 @@ public class AccountData extends AppCompatActivity {
         return true;
     }
 
-
 }

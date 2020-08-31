@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void checkData() {
-        productDatabase.productDao().getProduct().subscribeOn(Schedulers.computation()).subscribe(new SingleObserver<List<Product>>() {
+        productDatabase.productDao().getProducts().subscribeOn(Schedulers.computation()).subscribe(new SingleObserver<List<Product>>() {
             @Override
             public void onSubscribe(Disposable d) {
 

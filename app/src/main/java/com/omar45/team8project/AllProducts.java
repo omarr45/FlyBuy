@@ -20,7 +20,10 @@ import java.util.List;
 
 public class AllProducts extends AppCompatActivity implements ProductClickListener{
 
+    RecyclerView productsRecyclerView;
     private ProductsAdapter adapter;
+    ProductDatabase productDatabase;
+
     EditText inputText;
     Toolbar toolbar;
     Button search;
@@ -30,9 +33,6 @@ public class AllProducts extends AppCompatActivity implements ProductClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_products);
 
-        inputText = findViewById(R.id.input);
-        search = findViewById(R.id.searchButAll);
-
         toolbar = findViewById(R.id.toolbarAllprod);
         setSupportActionBar(toolbar);
 
@@ -41,18 +41,21 @@ public class AllProducts extends AppCompatActivity implements ProductClickListen
             getSupportActionBar().setTitle("All Products");
         }
 
-        RecyclerView productsRecyclerView = findViewById(R.id.allProdRecView);
+        inputText   = findViewById(R.id.input);
+        search      = findViewById(R.id.searchButAll);
+
+        productsRecyclerView = findViewById(R.id.allProdRecView);
         adapter = new ProductsAdapter(this, this);
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         productsRecyclerView.setAdapter(adapter);
 
-        final ProductDatabase productDatabase = ProductDatabase.getInstance(this);
+        productDatabase = ProductDatabase.getInstance(this);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (inputText == null || inputText.getText().toString().equals("")) {
-                    productDatabase.productDao().getProduct()
+                    productDatabase.productDao().getProducts()
                             .subscribeOn(Schedulers.computation())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new SingleObserver<List<Product>>() {

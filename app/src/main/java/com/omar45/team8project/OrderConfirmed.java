@@ -30,9 +30,9 @@ public class OrderConfirmed extends AppCompatActivity {
 
         order_number.setText(String.valueOf(order_number_generator.nextInt(1000)));
 
-        final CartDatabase cartDatabase=CartDatabase.getInstance(this);
+//        final CartDatabase cartDatabase=CartDatabase.getInstance(this);
 
-        cartDatabase.cartDao().deleteAll();
+//        cartDatabase.cartDao().deleteAll();
 
         backToHome.setOnClickListener(new View.OnClickListener() {
             @Override

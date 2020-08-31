@@ -28,7 +28,6 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
     Button confirm;
     double Longitude;
     double Latitude;
-    //TextView locationTxt;
     ArrayList<Address> addresses;
     Geocoder geocoder;
     Intent receive;
@@ -54,7 +53,7 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
         }
 
 
-       receive = getIntent();
+        receive = getIntent();
         Longitude = receive.getDoubleExtra("Longitude" , 31.2025);
         Latitude  = receive.getDoubleExtra("Latitude" , 30.0395);
 
@@ -98,8 +97,6 @@ public class ConfirmationOrder extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         startActivity(new Intent(ConfirmationOrder.this, OrderConfirmed.class));
-
-
     }
 
     public void setLocation(View view)

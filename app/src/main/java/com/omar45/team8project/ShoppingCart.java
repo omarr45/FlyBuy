@@ -1,6 +1,8 @@
 package com.omar45.team8project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -124,7 +126,23 @@ public class ShoppingCart extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onSuccess(List<Cart> cartList) {
+                    public void onSuccess(final List<Cart> cartList) {
+
+                        ItemTouchHelper.SimpleCallback itemTouchHelperCallback =
+                                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+                                    @Override
+                                    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                                        return false;
+                                    }
+
+                                    @Override
+                                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                                        cartList.remove(viewHolder.getAdapterPosition());
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                };
+
+                        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
 
                         adapter.setList(cartList);
                         adapter.notifyDataSetChanged();

@@ -4,3 +4,8 @@
 ### Contributors:
 1) Aboelwfaa Sadeek
 3) Omar AbdulRahman
+
+## You can check the demo [here](https://www.youtube.com/watch?v=_sdRX06ED7c)
+
+## License
+[![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
